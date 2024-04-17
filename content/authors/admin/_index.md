@@ -1,13 +1,10 @@
 ---
 # Display name
-title: 吳健雄
-
-# Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+title: Annie Boskova - Data Analyst
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Annie
+last_name: Boskova
 
 # Status emoji
 status:
