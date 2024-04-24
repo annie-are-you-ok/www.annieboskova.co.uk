@@ -20,7 +20,7 @@ sections:
     design:
       background:
         image:
-          filename: Erechtheion-temple.jpg
+          filename: 'Erechtheion-temple.jpg'
             spacing:
               padding: ['3rem', 0, '6rem', 0]
 ---
