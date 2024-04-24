@@ -4,8 +4,7 @@ date: 2024-04-24
 type: landing
 design:
   background:
-    image:
-      filename: 'Erechtheion-temple.jpg'
+    image: 'Erechtheion-temple.jpg'
         placement: 3
         focal_point: 'Top'
         preview_only: false
