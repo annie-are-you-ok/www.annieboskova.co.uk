@@ -2,6 +2,10 @@
 title: 'Home'
 date: 2024-04-24
 type: landing
+design:
+  background:
+    image:
+      filename: 'Erechtheion-temple.jpg'
 sections:
   - block: resume-biography
     content:
@@ -18,9 +22,6 @@ sections:
         folders:
           - blog
     design:
-      background:
-        image:
-          filename: 'Erechtheion-temple.jpg'
-            spacing:
-              padding: ['3rem', 0, '6rem', 0]
+      spacing:
+        padding: ['3rem', 0, '6rem', 0]
 ---
