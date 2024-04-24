@@ -2,12 +2,12 @@
 title: 'Home'
 date: 2024-04-24
 type: landing
+
+sections:
 design:
   background:
     image:
       filename: 'Erechtheion-temple.jpg'
-
-sections:
   - block: resume-biography
     content:
       # The user's folder name in content/authors/
