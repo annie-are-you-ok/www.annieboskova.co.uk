@@ -13,6 +13,9 @@ sections:
       # The user's folder name in content/authors/
       username: admin
     design:
+      background:
+        image:
+          filename: 'Erechtheion-temple.jpg'
       spacing:
         padding: [0, 0, 0, 0]
       biography:
