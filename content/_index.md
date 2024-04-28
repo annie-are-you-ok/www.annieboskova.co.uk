@@ -2,10 +2,6 @@
 title: 'Home'
 date: 2024-04-24
 type: landing
-design:
-  background:
-    image:
-      filename: 'Erechtheion-temple.jpg'
 
 sections:
   - block: resume-biography
@@ -13,6 +9,9 @@ sections:
       # The user's folder name in content/authors/
       username: admin
     design:
+      banner:
+        # Upload a cover image to `assets/media/` folder and reference its filename 
+        filename: 'Erechtheion.png'
       spacing:
         padding: [0, 0, 0, 0]
       biography:
