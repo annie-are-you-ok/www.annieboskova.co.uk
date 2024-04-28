@@ -50,7 +50,7 @@ profiles:
 highlight_name: true
 
 # Author's website URL
-website: ""
+website: https://www.annieboskova.co.uk
 ---
 
 Annie Boskova is an ambitious, organised, and self-motivated individual with a strong academic background in analytical research and Psychology. With a keen interest in Python and data analytics, she is continuously building on her skills and learning by working on personal projects, such as co-managing a recipe website through VS Code and GitHub, playing around with APIs to create simple games, as well as taking part in Data Analysis courses.
