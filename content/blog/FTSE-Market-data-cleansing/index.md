@@ -25,9 +25,11 @@ The Financial Times Stock Exchange 100 (FTSE 100) Index data is a share index of
 Before we were able to perform any data analysis, some data cleansing was required which was the focus of this project. What do I mean by data cleansing? That is the removal of missing or incorrect values, and superfluous data. Transforming some of the data involved changing data types which allowed me to utilise arithmetic operators to create new columns within the data set before analysis took place.
 
 
-To begin data cleansing, I first had to import Pandas, this is because I was working with a dataframe. By calling the `.read_csv()` function, I was able to import (or ‘read’) the CSV file into a dataframe and take a look at the dataset. Calling the `.head()` method on the dataframe allowed me to print out the first 5 rows so that I could get an idea of what the dataset looks like:
+To begin data cleansing, I first had to import Pandas, this is because I was working with a dataframe. By calling the ```python .read_csv()``` function, I was able to import (or ‘read’) the CSV file into a dataframe and take a look at the dataset. Calling the `.head()` method on the dataframe allowed me to print out the first 5 rows so that I could get an idea of what the dataset looks like:
 
-![screen reader text](Screenshot-1.png "caption")
+![screen reader text](Screenshot-1.png)
+
+
 
 
 
