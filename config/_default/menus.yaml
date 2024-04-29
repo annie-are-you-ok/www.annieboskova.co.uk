@@ -5,9 +5,15 @@ main:
   - name: Home
     url: /
     weight: 10
+
+  - name: About
+    url: about/
+    weight: 20
+
   - name: Topics
     url: tags/
-    weight: 20
+    weight: 30
+
   - name: Uses
     url: uses/
-    weight: 30
+    weight: 40
