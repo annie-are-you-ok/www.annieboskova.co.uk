@@ -50,7 +50,7 @@ locale:
 
 # Site features
 features:
-  math:
+  math: true
     enable: true
   privacy_pack:
     enable: false
