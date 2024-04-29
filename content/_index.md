@@ -11,7 +11,7 @@ sections:
     design:
       banner:
         # Upload a cover image to `assets/media/` folder and reference its filename 
-        filename: 'reculver.JPG'
+        filename: 'Erechtheion.png'
       spacing:
         padding: [0, 0, 0, 0]
       biography:
