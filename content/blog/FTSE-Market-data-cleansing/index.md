@@ -35,8 +35,6 @@ Upon inspection, I found that one of the columns (‘Strong Buy‘) was made up 
 
 We were told that one of the companies (Royal Dutch Shell) had two entries, but I wanted to know how I could identify this for myself. After reading through Pandas documentation, and some trial and error, I was able to work this out by using **.nunique()** on the dataframe, which showed me that there were 100 company names but 101 ‘Tickers’ (these are abbreviations for the companies). I then used **.describe()** on the ‘Company’ column to find the duplicated company, like this:
 
-![screen reader text](Screenshot-3.png) This showed me that  ‘Royal Dutch Shell’ had 2 rows (‘top’ referring to the most common value, and ‘freq’ referring to how often it occurs). I was then able to use the following line of code to compare the 2 entries and decide which to keep: ```python
-df[df['Company'] == 'Royal Dutch Shell']
-``` 
+![screen reader text](Screenshot-3.png) This showed me that  ‘Royal Dutch Shell’ had 2 rows (‘top’ referring to the most common value, and ‘freq’ referring to how often it occurs). I was then able to use the following line of code to compare the 2 entries and decide which to keep: ```df[df['Company'] == 'Royal Dutch Shell']``` 
 
 
