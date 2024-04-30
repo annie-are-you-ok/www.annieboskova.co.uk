@@ -9,10 +9,12 @@ share: false  # Show social sharing links?
 profile: false  # Show author profile?
 comments: false  # Show comments?
 
-# Optional banner image (relative to `assets/media/` folder).
-banner:
-  image: 'header.png'
+image:
+  placement: 1
   caption: 'Image credit: Annie Boskova'
+  focal_point: 'Center'
+  preview_only: false
+
 ------
 
 ### Who am I? What is my background?
