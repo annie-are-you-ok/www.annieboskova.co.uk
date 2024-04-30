@@ -5,8 +5,8 @@ date: 2024-04-29
 
 # Featured image
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
-# image: ''
-#   caption: '' #'Image credit: [**Unsplash**](https://unsplash.com)'
+image: 
+  caption: Image credit: [**giphy**](https://www.giphy.com/)
 
 authors:
   - admin
@@ -16,6 +16,7 @@ tags:
   - Pandas
   - NumPy
   - Data Cleansing
+  - Assignment
 ---
 The Financial Times Stock Exchange 100 (FTSE 100) Index data is a share index of the 100 companies listed on the London Stock Exchange with the highest market capitalisation. 
 
@@ -192,9 +193,15 @@ Lastly, I cast **companies_list** to a set data type to get rid of duplicates as
 ```python 
 companies_list = list(set(companies_list))
 ```
-Once I ran my code, I found that 3 of the companies in **watchlist** had prices that were equal to or lower than the target price, had a Buy Ratio value equal to or higher than 0.5, or both. These companies were Standard Chartered, TUI, and  AstraZeneca.
+Once I ran my code, I found that 3 of the companies in **watchlist** had prices that were equal to or lower than the target price, had a Buy Ratio value equal to or higher than 0.5, or both. These companies were Standard Chartered, TUI, and AstraZeneca.
 ![screen reader text](screenshot-11.png "screenshot-11")
 
 ### Aftermath - What did I learn?
 
+By completing this assignment I gained a better understanding of the importance of data cleansing and why it is often necessary.
+Data cleansing allows you to investigate the data set you are interested in, and get it ready for your project. Often times you may find that columns contain NaN values or duplicates, or might be in the wrong data type. Things like this can interfere with your analysis, by either returning the wrong calculations or by causing an error and not returning a result. Data cleansing is, therefore, an absolute requirement to be able to effectively work with the data.
+
+By doing this you may also find that certain columns are less valuable/important to you and may choose to drop them from your dataframe - though you should always make sure to use the **.copy()** method to create a copy of the original dataframe. You might not want that column, but someone else using the dataframe might!
+
+During this particular assignment, I had to deal with a column made up entirely of NaN values, a duplicated row, as well as values with the wrong data type and including unwanted characters (commas and percentage symbols). However, I was also able to create some new columns, make use of the **.apply()** method to pass the values of a series into a function, and prepare my dataframe for further analysis.
 
