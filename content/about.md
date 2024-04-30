@@ -12,7 +12,7 @@ comments: false  # Show comments?
 # Optional header image (relative to `assets/media/` folder).
 header:
   caption: ""
-  image: ""
+  image: about.jpg
 ------
 
 ### Who am I? What is my background?
