@@ -9,10 +9,10 @@ share: false  # Show social sharing links?
 profile: false  # Show author profile?
 comments: false  # Show comments?
 
-# Optional header image (relative to `assets/media/` folder).
-header:
-  caption: ""
+# Optional banner image (relative to `assets/media/` folder).
+banner:
   image: 'about.jpg'
+  caption: ''
 ------
 
 ### Who am I? What is my background?
