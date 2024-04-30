@@ -3,7 +3,7 @@ title: FTSE Market - Data Cleansing
 summary: L4 Data Analysis Bootcamp with Cambridge Spark - Data Cleansing Assignment. #shows on the homepage
 date: 2024-04-29
 
-# Featured image
+Featured image:
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
 image: 'featured.png'
   caption: Image credit: [**giphy**](https://www.giphy.com/)
