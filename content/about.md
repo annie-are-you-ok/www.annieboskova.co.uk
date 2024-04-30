@@ -9,13 +9,14 @@ share: false  # Show social sharing links?
 profile: false  # Show author profile?
 comments: false  # Show comments?
 
-image:
-  placement: 1
-  caption: 'Image credit: Annie Boskova'
-  focal_point: 'Center'
-  preview_only: false
+# image:
+#   placement: 1
+#   caption: 'Image credit: Annie Boskova'
+#   focal_point: 'Center'
+#   preview_only: false
 
 ------
+![screen reader text](about.png)
 
 ### Who am I? What is my background?
 

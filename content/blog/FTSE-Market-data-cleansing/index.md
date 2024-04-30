@@ -9,7 +9,7 @@ image:
   placement: 1
   caption: 'Image credit: [**giphy**](https://www.giphy.com/)'
   #focal point = Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, or BottomRight
-  focal_point: ''
+  focal_point: 'Smart'
   preview_only: false
 
 authors:
