@@ -7,6 +7,12 @@ date: 2024-04-29
 # image:
 #   caption: Image credit: [**giphy**](https://www.giphy.com/)
 
+image:
+  placement: 1
+  caption: 'Image credit: [**giphy**](https://www.giphy.com/)'
+  focal_point: ''
+  preview_only: false
+
 authors:
   - admin
 
