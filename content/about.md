@@ -10,10 +10,9 @@ profile: false  # Show author profile?
 comments: false  # Show comments?
 
 # Optional banner image (relative to `assets/media/` folder).
-design:
-  banner:
-    image: 'about.jpg'
-    caption: ''
+banner:
+  image: 'header.png'
+  caption: 'Image credit: Annie Boskova'
 ------
 
 ### Who am I? What is my background?
