@@ -1,4 +1,4 @@
----
+<!-- ---
 title: 
 summary: L4 Data Analysis Bootcamp with Cambridge Spark -  #shows on the homepage
 date: 2024-04-29
@@ -55,4 +55,4 @@ intro/summary
 
 
 ### Aftermath - What did I learn?
-
+ -->
