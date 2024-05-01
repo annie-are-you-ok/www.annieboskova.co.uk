@@ -12,7 +12,7 @@ main:
 
   - name: Blog
     url: blog/
-    weight: 0
+    weight: 30
 
   - name: Topics
     url: tags/
