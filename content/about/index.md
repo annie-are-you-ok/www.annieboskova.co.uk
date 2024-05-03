@@ -11,7 +11,7 @@ comments: false  # Show comments?
 
 image:
   placement: 1
-  caption: 'Image credit: Annie Boskova'
+  caption: 'Image credit: Me'
   focal_point: 'Center'
   preview_only: false
 
