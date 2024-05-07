@@ -12,7 +12,7 @@ comments: false  # Show comments?
 image: #saved as featured.png
   placement: 1
   caption: 'Image credit: Me'
-  focal_point: 'Center'
+  focal_point: 'Smart'
   preview_only: false
 
 ------
