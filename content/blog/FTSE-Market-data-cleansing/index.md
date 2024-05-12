@@ -25,7 +25,7 @@ The Financial Times Stock Exchange 100 (FTSE 100) Index data is a share index of
 
 Before we were able to perform any data analysis, some data cleansing was required which was the focus of this project. What do I mean by data cleansing? That is the removal of missing or incorrect values, and superfluous data. Transforming some of the data involved changing data types which allowed me to utilise arithmetic operators to create new columns within the data set before analysis took place.
 
-**WHY? more context on why I did this**
+<!-- **WHY? more context on why I did this** -->
 
 ### Data Cleansing
 
