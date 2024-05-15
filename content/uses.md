@@ -1,22 +1,34 @@
 ---
 title: Uses
-date: 2023-10-24
+date: 2024-05-09
 hide_date: true
 reading_time: false
 ---
-<!-- 
-The idea of a Uses page is to tell you about the stuff I use.
+## Uses
+Welcome to my Uses page. These are some of the software, hardware, and services I use.
 
-Make sure to check out [uses.tech](https://uses.tech/) for a list of everyone's Uses pages!
+<!-- Make sure to check out [uses.tech](https://uses.tech/) for a list of everyone's Uses pages! -->
 
-I often get asked about what software or hardware I use, so this page will serve as a living document and a place to point curious readers to when I get asked.
+## Hardware
+- **Laptop:** HONOR HLYL-WXX9
+<!-- - **Computer:** Desktop
+- **Monitor**  -->
 
-## Editor + Terminal
+## Software 
+**Operating System:** Linux - Ubuntu 22.04 LTS - Jammy Jellyfish
+**Command line interface (CLI) / Terminal:** GNOME
+**IDE/Text Editor:** VS Code (Visual Studio Code)
 
-- [Visual Studio Code](https://code.visualstudio.com/) is my current editor
-- Chrome is my main browser
-- iTerm2 is my terminal
+**Interactive web-based environments:** Jupyter Notebook / Google Colab
 
-## Desktop Apps
+**Web Browsers:** Google Chrome / Firefox
+**Productivity Software:** Google Workspace
+**Photo Editor:** GIMP - GNU Image Manipulation Program
 
-- Better Touch Tool for window management and custom keyboard shortcuts -->
+### For Fun
+- Canon Eos 1300d
+- Kobo Touch N905
+- Brother JK2500NT Sewing Machine
+- Nintendo Switch
+- Libby / BorrowBox
+- Spotify
