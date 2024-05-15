@@ -12,7 +12,7 @@ comments: false  # Show comments?
 image: #saved as featured.png
   placement: 3
   #placement options: 1 = Full column width, 2 = Out-set, 3 = Screen-width.
-  caption: 'Image credit: Me'
+  caption: ''
   focal_point: 'Smart'
   preview_only: false
 
