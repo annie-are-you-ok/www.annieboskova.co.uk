@@ -17,9 +17,7 @@ Welcome to my Uses page. These are some of the software, hardware, and services 
 - **Operating System:** Linux - Ubuntu 22.04 LTS - Jammy Jellyfish
 - **Command line interface (CLI) / Terminal:** GNOME
 - **IDE/Text Editor:** VS Code (Visual Studio Code)
-
 - **Interactive web-based environments:** Jupyter Notebook / Google Colab
-
 - **Web Browsers:** Google Chrome / Firefox
 - **Productivity Software:** Google Workspace
 - **Photo Editor:** GIMP - GNU Image Manipulation Program
