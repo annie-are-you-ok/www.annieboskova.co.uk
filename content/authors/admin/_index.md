@@ -52,5 +52,6 @@ highlight_name: true
 # Author's website URL
 website: https://www.annieboskova.co.uk
 ---
+Aspiring Data Analyst with a keen interest in data visualisation, descriptive statistics, data trends, all things book-related, and a mild caffeine addiction. :coffee:	
 
-Annie Boskova is an ambitious, organised, and self-motivated individual with a strong academic background in analytical research and Psychology. With a keen interest in Python and data analytics, she is continuously building on her skills and learning by working on personal projects, such as co-managing a recipe website through VS Code and GitHub, playing around with APIs to create simple games, as well as taking part in Data Analysis courses.
+<!-- I am Anežka, aka Annie, an aspiring data analyst with a background in Psychology. My interests lie in data visualization, descriptive statistics and trends, and all things book-related, especially fantasy because dragons. -->
