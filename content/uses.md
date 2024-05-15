@@ -10,8 +10,8 @@ Welcome to my Uses page. These are some of the software, hardware, and services 
 
 ## Hardware
 - **Laptop:** HONOR HLYL-WXX9
-<!-- - **Computer:** Desktop
-- **Monitor**  -->
+- **Computer:** Partner's Custom Built PC
+- **Monitor:** Samsung Odyssey G9 
 
 ## Software 
 - **Operating System:** Linux - Ubuntu 22.04 LTS - Jammy Jellyfish
