@@ -43,7 +43,10 @@ matplotlib_axes_logger.setLevel('ERROR')
 ```
 
 ### Data Collection
-Using the following code, I was able to combine some CSV files into one dataframe (called data) using the **.concat()** method. I did this so that I could process the data from 3 datasets (heating_2018, hot_water_2018, and catering_2018) all at once and carry out some analysis. This resulted in a dataframe shape of 108 indexes and 8 columns.
+Using the following code, I was able to combine some CSV files into one dataframe (called data) using the **.concat()** method. I did this so that I could process the data from 3 datasets (heating_2018, hot_water_2018, and catering_2018) all at once and carry out some analysis. This resulted in a dataframe shape of 108 indexes and 8 columns. 
+
+![screen reader text](screenshot-2.png "screenshot-2")
+
 ```python
 df1 = pd.read_csv('data/heating_2018.csv')
 df2 = pd.read_csv('data/hot_water_2018.csv')
@@ -55,7 +58,7 @@ Concatenating dataframes would usually result in a *index* column of the origina
 
 The resulting dataframe looked like this - I have included the top 5 rows (.head()) as well as 5 random rows (.sample(5)) - this is because, whilst the top 5 rows show that my code worked, **.sample()** shows that my keys (['Heating', 'Hot Water', 'Catering']) are working as intended:
 
-![screen reader text](screenshot-2.png "screenshot-2")
+![screen reader text](screenshot-3.png "screenshot-3")
 
 ### Data Processing
 Next, I tidied up the data.
@@ -78,10 +81,10 @@ After this, I created a new column that calculated the sum of the numerical valu
 data['Total'] = data.sum(axis=1)
 ```
 I then checked how my dataframe was looking:
-![screen reader text](screenshot-3.png "screenshot-3")
+![screen reader text](screenshot-4.png "screenshot-4")
 
 As you can see, the NaNs have been changed into 0's and a new column has been creating which sums up the integers for each row. If I run **data.info()**, you will also see that the columns 'Electricity' and 'Natural Gas' are now integers:
-![screen reader text](screenshot-4.png "screenshot-4")
+![screen reader text](screenshot-5.png "screenshot-5")
 
 ### Data Grouping
 Next, I wanted to group my dataframe by the sub-sectors so that I could filter the energy type by sub-sector - I did this by calling the **groupby.()** method and passing the *'Sub-Sector'* column. By using **.sum()** I was also able to calculate the total of the numerical columns of each group. 
@@ -91,7 +94,7 @@ ss = data.groupby(by = 'Sub-Sector').sum()
 ss.sample(5)
 ```
 This resulted in the following dataframe:
-![screen reader text](screenshot-5.png "screenshot-5")
+![screen reader text](screenshot-6.png "screenshot-6")
 
 I was then able to create a bar plot for a nice to visualisation of the total sum of numerical values for each sub-sector which shows that hospitals consume the most energy (i.e. natural gas), whilst private offices consume the most energy across all energy types:
 ![screen reader text](barplot-1.png "barplot-1")
@@ -101,7 +104,7 @@ I also wanted to calculate the energy types by the *'Use'* column to get an idea
 use = data.groupby(by = 'Use').sum() 
 use
 ```
-![screen reader text](screenshot-6.png "screenshot-6")
+![screen reader text](screenshot-7.png "screenshot-7")
 This showed that 'Heating' used by far the most energy. Though interestingly, 'Hot Water' was the only user of 'Other energy'.
 
 This pie chart offers a nice visual for this, clearly showing that Heating consumes the most energy:
@@ -113,7 +116,7 @@ sector = data.groupby(by = 'Sector')['Total'].agg(['sum', 'mean', 'count'])
 sector = sector.sort_values(by = 'sum', ascending = False)
 ```
 This showed me the sum, mean, and count for all the values, arranged by the sectors.
-![screen reader text](screenshot-7.png "screenshot-7")
+![screen reader text](screenshot-8.png "screenshot-8")
 <!--  -->
 <!--a summary of what you can see from this data about sample sizes or clear outliers like the military.  -->
 <!--  -->
@@ -138,13 +141,13 @@ new_df_use = use.loc[:, ['Electricity', 'Natural Gas', 'Oil', 'District Heating'
 ```
 This allowed me to create the following dataframe: 
 
-![screen reader text](screenshot-8.png "screenshot-8")
+![screen reader text](screenshot-9.png "screenshot-9")
 
 Using this dataframe I was able to create the following horizontal and stacked bar plot:
 ![screen reader text](barh-1.png "barh-1")
 This shows the energy consumption by industry, but also breaks it down by the specific energy type. This allows you to see not only which industry consumes the most energy, but which energy type they use most.
 
-<!-- scatter plot  to check if any one record is skewing the data-->
+<!-- scatter plot  to check if any one record is skewing the data - all the datasets to check to see if there were serious outliers that would skew the analysis-->
 
 ### Aftermath - What did I learn?
 This assignment taught me how to combine multiple datasets using **.concat()**, allowing me to compare and analyse 3 datasets at once. The importance of data cleansing was also reinforced as I had to tidy up the dataframe; I had to use **.fillna()** to convert NaN values into 0, **.astype(int)** to cast some floats to integers, **.rename()** to change the name of a column, and **.reset_index()** so that the new dataframe would have an index beginning at 0. All of this massively improved the readability of the dataframe. 
