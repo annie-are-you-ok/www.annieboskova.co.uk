@@ -1,7 +1,7 @@
 ---
 title: Exploring Reading Habits and Trends with Seaborn
 summary: Personal project, looking at books and reading patterns. #shows on the homepage
-date: 2024-05-24
+date: 2024-05-29
 
 # Place an image named `featured.jpg/png/gif` in this page's folder and customize its options here.
 image:
