@@ -1,6 +1,6 @@
 ---
-title: FTSE Market - Data Cleansing
-summary: L4 Data Analysis Bootcamp with Cambridge Spark - Data Cleansing Assignment. #shows on the homepage
+title: FTSE Market - Data Cleaning
+summary: L4 Data Analysis Bootcamp with Cambridge Spark - Data Cleaning Assignment. #shows on the homepage
 date: 2024-04-19
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
 image:
@@ -18,18 +18,18 @@ tags:
   - FTSA
   - Pandas
   - NumPy
-  - Data Cleansing
+  - Data Cleaning
   - Assignment
 ---
 The Financial Times Stock Exchange 100 (FTSE 100) Index data is a share index of the 100 companies listed on the London Stock Exchange with the highest market capitalisation. 
-
-Before we were able to perform any data analysis, some data cleansing was required which was the focus of this project. What do I mean by data cleansing? That is the removal of missing or incorrect values, and superfluous data. Transforming some of the data involved changing data types which allowed me to utilise arithmetic operators to create new columns within the data set before analysis took place.
-
 <!-- **WHY? more context on why I did this** -->
+The purpose of this assignment was to practise data cleaning with a large dataset and put into practice what I had learnt.  
 
-### Data Cleansing
+Before we were able to perform any data analysis, some data cleaning was required which was the focus of this project. What do I mean by data cleaning? That is the removal of missing or incorrect values, and superfluous data. Transforming some of the data involved changing data types which allowed me to utilise arithmetic operators to create new columns within the data set before analysis took place.
 
-To begin data cleansing, I first had to import Pandas, this is because I was working with a dataframe. By calling the **.read_csv()** function, I was able to import (or ‘read’) the CSV file into a dataframe and take a look at the dataset. Calling the **.head()** method on the dataframe allowed me to print out the first 5 rows so that I could get an idea of what the dataset looks like:
+### Data cleaning
+
+To begin data cleaning, I first had to import Pandas, this is because I was working with a dataframe. By calling the **.read_csv()** function, I was able to import (or ‘read’) the CSV file into a dataframe and take a look at the dataset. Calling the **.head()** method on the dataframe allowed me to print out the first 5 rows so that I could get an idea of what the dataset looks like:
 ![screen reader text](screenshot-1.png "screenshot-1")
 
 I then called **.info()** to look at the data types and amount of non-null values in the dataframe:
@@ -203,8 +203,8 @@ Once I ran my code, I found that 3 of the companies in **watchlist** had prices 
 
 ### Aftermath - What did I learn?
 
-By completing this assignment I gained a better understanding of the importance of data cleansing and why it is often necessary.
-Data cleansing allows you to investigate the data set you are interested in, and get it ready for your project. Often times you may find that columns contain NaN values or duplicates, or might be in the wrong data type. Things like this can interfere with your analysis, by either returning the wrong calculations or by causing an error and not returning a result. Data cleansing is, therefore, an absolute requirement to be able to effectively work with the data.
+By completing this assignment I gained a better understanding of the importance of data cleaning and why it is often necessary.
+Data cleaning allows you to investigate the data set you are interested in, and get it ready for your project. Often times you may find that columns contain NaN values or duplicates, or might be in the wrong data type. Things like this can interfere with your analysis, by either returning the wrong calculations or by causing an error and not returning a result. Data cleaning is, therefore, an absolute requirement to be able to effectively work with the data.
 
 By doing this you may also find that certain columns are less valuable/important to you and may choose to drop them from your dataframe - though you should always make sure to use the **.copy()** method to create a copy of the original dataframe. You might not want that column, but someone else using the dataframe might!
 
