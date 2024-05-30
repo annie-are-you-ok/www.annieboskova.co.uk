@@ -1,7 +1,7 @@
 ---
-title: Exploring Reading Habits and Trends with Seaborn
+title: Who's reading, anyway? Exploring Reading Trends with Seaborn
 summary: Personal project, looking at books and reading patterns. #shows on the homepage
-date: 2024-05-29
+date: 2024-05-30
 
 # Place an image named `featured.jpg/png/gif` in this page's folder and customize its options here.
 image:
@@ -28,18 +28,18 @@ As an avid reader with an interest in social trends and data visualisation, for 
 
 I wanted to explore some datasets that would help me answer the following questions:
 1. Do females read more than males? 
-2. Do men (18 yrs+) read more non-fiction than women? **top_goodreads_df**
+2. Do men (18 yrs+) read more non-fiction than women? 
 3. Do more people listen to audiobooks than read physical books? 
 
 #### General trends;
-- Most popular genre **top_goodreads_df**
-- Trends by gender, age, education, income (reading_habits_df) **reading_habits_df** 
+- Most popular genre 
+- Trends by gender, age, education, income  
 
 ### Data Collecting
 I used the following datasets from kaggle.com:
 1. **Reading habits**: https://www.kaggle.com/datasets/vipulgote4/reading-habit-dataset/data 
 
-This dataset looks at the reading habits and demographics of 2832 people, accross 14 columns. It includes age, gender, and number of books read in a 12 moth period (the data is about 4 years old).
+This dataset looks at the reading habits and demographics of 2832 people, across 14 columns. It includes age, gender, and number of books read in a 12 moth period (the data is about 4 years old).
 
 ![screen reader text](reading_habits_df_head.png "reading_habits_df.head(2)")
 ![screen reader text](reading_habits_df_shape.png "reading_habits_df.shape")
@@ -128,12 +128,11 @@ I decided to create a boxplot next to allow me to see the central tendency, disp
 
 ![screen reader text](boxplot-1.png "age boxplot") 
 
-By calling the **.describe()** method, I was able to see that the youngest person was 16 years old and the oldest was 93 years old, with the average age being 47.3 years old.  
+By calling the **.describe()** method, I was able to see that the youngest person was 16 years old and the oldest was 93 years old, with the average age being 47.3 years old, whilst the mode age was 50 years old.  
 
 A histogram showed that a large amount of the sample were in their 20s, though the majority of people aged between 50-60 years old. And though it looks like there were many twenty-something year olds, 20-29 year olds only made up 13% of the group, whilst 50-60 year olds made up 21.6%.
 
 ![screen reader text](histogram-1.png "age distribution") 
-
 
 ### Who Reads More?
 
@@ -142,7 +141,10 @@ A histogram showed that a large amount of the sample were in their 20s, though t
 I first used a histogram to look at the distribution of the number of books read over a 12 month period. 
 ![screen reader text](histogram-2.png "histogram") 
 
-From this histogram I can see that the data is skewed to the left, i.e. most people read around 0-15 books (calling the **.describe()** method showed that the average books read were 16.7), though a large reason for this might be that the highest count seems to be for 0-2 books (i.e. around 700 people said they read 0 to 2 books).
+From this histogram I can see that the data is skewed to the left, i.e. most people read around 0-15 books.
+Running some descriptive statistics (by calling the **.describe()** and **.mode()** methods) showed that the average books read (i.e. the mean) were 16.7, though a large reason for this might be that the highest count seemed to be for 0-2 books (i.e. around 700 people said they read 0 to 2 books). This is also supported by the mode being 0.
+
+![screen reader text](screenshot-4.png "screenshot-books read descriptive stats") 
 
 By running the following line of code I was able to work out that 390 people said they didn't read any books (i.e. 13.8% of the people in the dataset).
 ```python
@@ -164,19 +166,71 @@ And lastly, the pie chart below shows that, of all the books read (according to 
 
 ![screen reader text](piechart-1.png "piechart") 
 
-<!-- ### Reading Trends
+### Reading Trends
+Next I wanted to compare the number of books read with level of education, income, marital status, race, and age. I did this by creating several barplots looking at the mean books read. 
 
+The following bar plot shows that post-grade educated people read the most (around 22 books), followed by college graduates (~18 books) and people with 'some college' - it would have been interesting to see what type of books these individuals read but unfortunately, this dataset didn't specify that information. Excluding the group that refused to disclose their educational level who collectively read the least,  the rest read a similar amount (between 10-14 books). This suggests that higher educated people read slightly more but the average person isn't far off. Though there was some variability in number of books read across each category as shown by the error bars.
+
+![screen reader text](barplot-edu.png "books read x education") 
+
+When looking at income brackets, I found that there wasn't too much difference in number of books read. The barplot below shows that those earning between $100,000 - $150,000 read the most (around 18 books), however, the least read books was around 12.5 (those earning the least).
+
+![screen reader text](barplot-inc.png "books read x income") 
+
+Interesting, the following barplot revealed that individuals who were 'separated' read the fewest books (~10), whereas those 'living with a partner' read the most (a little under 20 books) and also showed the greatest variability in the number of books read. 
+
+![screen reader text](barplot-mar.png "books read x marital status") 
+
+When Comparing number of books read by race, I found that those identifying as 'white' read the most (~18 books), and those identifying as 'Asian or Pacific Islander' read the least(~10 books). However, those who read the most (~20 books) didn't disclose their race, and similarly some people said they "didn't know" their race or selected 'other'. Interestingly, there was also a lot of variability across each race. 
+
+![screen reader text](barplot-race.png "books read x race") 
 
 books read x age
-books read x education
-books read x income
-books read x marital status
+In order to explore the correlation between age and books read, I first created a new column (*age_group*) and grouped the ages by decade to make it more manageable to handle. I did this using the following code:
+```python 
+age_df = reading_habits_clean.copy() #tracking changes
 
+age_df.loc[age_df['Age']<20, 'age_group'] = '<20'
+age_df.loc[age_df['Age'].between(20,29), 'age_group'] = '20-29'
+age_df.loc[age_df['Age'].between(30,39), 'age_group'] = '30-39'
+age_df.loc[age_df['Age'].between(40,49), 'age_group'] = '40-49'
+age_df.loc[age_df['Age'].between(50,59), 'age_group'] = '50-59'
+age_df.loc[age_df['Age'].between(60,69), 'age_group'] = '60-69'
+age_df.loc[age_df['Age'].between(70,79), 'age_group'] = '70-79'
+age_df.loc[age_df['Age'].between(80,89), 'age_group'] = '80-89'
+age_df.loc[age_df['Age']>=90, 'age_group'] = '>90'
+```
+This produced a dataframe that looked like this (I have used the **.sample(5)** method to show 5 random rows as I find that it gives a better representation of the data rather than always looking at the same 5 rows).
 
+I then also set the order (I needed to do this as the data type of my new column was string and not ordered) for the *age_group* values by;
+1. defining my desired order:
+```python
+ordered_ages = ['<20', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '>90']
+```
+2. Converting my age groups list into an ordered categorical type:
+```python
+age_df['age_group'] = pd.Categorical(age_df['age_group'], categories=ordered_ages, ordered=True)
+```
+3. Sorting the dataframe by my now ordered age_group column:
+```python
+age_df = age_df.sort_values('age_group')
+```
 
+As a result, I was able to produce the following countplots using Seaborn's **FacetGrid** feature.
 
+![screen reader text](age_countplots.png "books read by age groups") 
 
-### 2. **Top Goodreads Books (1980-2023)**:
+This shows the distribution of the number of books read (0-97 books) in a 12 month period across different age groups. It highlights that people over 70 years old read the least, whilst the most books were read by 60-69 year olds (they had the highest count for 97 books read).
+Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80. Overall, most people, regardless of age, tend to read about 0-6 books, but there is considerable variability and many people read as many as 25-50 books.
+
+<!-- ### 2. **Top Goodreads Books (1980-2023)**:
+
+2. Do men (18 yrs+) read more non-fiction than women? 
+3. Do more people listen to audiobooks than read physical books? 
+
+General trends;
+- Most popular genre 
+- Trends by gender, age, education, income  
 
 
 
@@ -191,6 +245,8 @@ color='mediumpurple'
 
 
 
+### 3. Me, myself, and I:
+Now the fun part, how does all this reflect my own reading habits?
 
 
 
