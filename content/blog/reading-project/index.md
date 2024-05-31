@@ -28,12 +28,10 @@ As an avid reader with an interest in social trends and data visualisation, for 
 
 I wanted to explore some datasets that would help me answer the following questions:
 1. Do females read more than males? 
-2. Do men (18 yrs+) read more non-fiction than women? 
-3. Do more people listen to audiobooks than read physical books? 
+2. Do gender, age, education, income, or race influence how much a person reads?
+3. What are the most popular genres?
+4. What are the highest rated books (according to Goodreads?) 
 
-#### General trends;
-- Most popular genre 
-- Trends by gender, age, education, income  
 
 ### Data Collecting
 I used the following datasets from kaggle.com:
@@ -51,13 +49,13 @@ This dataset looks at the top 100 books for each year between 1980 and 2023, acc
 ![screen reader text](top_goodreads_df_head1.png)
 ![screen reader text](top_goodreads_df_head2.png "top_goodreads_df.head(2)")
 ![screen reader text](top_goodreads_df_shape.png "top_goodreads_df.shape")
-
+<!-- 
 3. **Personal dataset**
 
 This dataset is created from my own personal library spreadsheet which documents my physical and electronic book collection as well as some details about each book (e.g. whether I have read it and what genre it is). It is made up of 278 indexes and 12 columns.
 
 ![screen reader text](df_sample(5).png "df.sample(5)")
-![screen reader text](df_shape.png "df.shape-")
+![screen reader text](df_shape.png "df.shape-") -->
 
 
 ### Importing Libraries
@@ -70,7 +68,7 @@ import seaborn as sns
 ```
 I was then able to use the **.read_csv()** method to read my datasets into dataframes. After this, I explored the datasets, checked if anything needed to be amended or removed, looked for NaNs, and got to cleaning.  
 
-### 1. **Reading habits**
+### Reading Habits Dataset
 #### Data Cleaning
 
 With this dataset I was happy with the data types of the columns, but I decided to drop the last 3 columns as I wasn't interested in them. I did this by first creating a copy of my dataframe to allow me to track my changes, created a list of the columns I wanted to drop (I called this list *cols_to_drop*); by creating a list of the columns I wanted to alter, I was able to pass the list name through a method rather than naming each column, which in this case would have been a long and messy piece of code due to the column names being so long.
@@ -113,7 +111,6 @@ def fix_format(x):
 reading_habits_clean['Incomes'] = reading_habits_clean['Incomes'].apply(fix_format)
 ```
 
-
 Finally, I needed to rename one of the columns as it was misspelt ('Employement'). I did this with the following piece of code.
 ```python
 reading_habits_clean = reading_habits_clean.rename(columns={'Employement':'Employment'})
@@ -122,8 +119,7 @@ reading_habits_clean = reading_habits_clean.rename(columns={'Employement':'Emplo
 My resulting clean dataframe looked like this:
 ![screen reader text](screenshot-3.png "screenshot-3") 
 
-
-### Age Distribution
+#### Age Distribution
 I decided to create a boxplot next to allow me to see the central tendency, dispersion, and outliers within age. This showed that the majority of the sample were aged between 30-60 years, with some outliers on both ends. 
 
 ![screen reader text](boxplot-1.png "age boxplot") 
@@ -134,9 +130,9 @@ A histogram showed that a large amount of the sample were in their 20s, though t
 
 ![screen reader text](histogram-1.png "age distribution") 
 
-### Who Reads More?
+<!-- #### Who Reads More? -->
 
-<!-- 1. Do females read more than males? -->
+#### 1. Do females read more than males?
 
 I first used a histogram to look at the distribution of the number of books read over a 12 month period. 
 ![screen reader text](histogram-2.png "histogram") 
@@ -166,7 +162,10 @@ And lastly, the pie chart below shows that, of all the books read (according to 
 
 ![screen reader text](piechart-1.png "piechart") 
 
-### Reading Trends
+#### 2. Do gender, age, education, income, or race influence how much a person reads?
+
+<!-- **Reading Trends** -->
+
 Next I wanted to compare the number of books read with level of education, income, marital status, race, and age. I did this by creating several barplots looking at the mean books read. 
 
 The following bar plot shows that post-grade educated people read the most (around 22 books), followed by college graduates (~18 books) and people with 'some college' - it would have been interesting to see what type of books these individuals read but unfortunately, this dataset didn't specify that information. Excluding the group that refused to disclose their educational level who collectively read the least,  the rest read a similar amount (between 10-14 books). This suggests that higher educated people read slightly more but the average person isn't far off. Though there was some variability in number of books read across each category as shown by the error bars.
@@ -185,7 +184,6 @@ When Comparing number of books read by race, I found that those identifying as '
 
 ![screen reader text](barplot-race.png "books read x race") 
 
-books read x age
 In order to explore the correlation between age and books read, I first created a new column (*age_group*) and grouped the ages by decade to make it more manageable to handle. I did this using the following code:
 ```python 
 age_df = reading_habits_clean.copy() #tracking changes
@@ -221,35 +219,38 @@ As a result, I was able to produce the following countplots using Seaborn's **Fa
 ![screen reader text](age_countplots.png "books read by age groups") 
 
 This shows the distribution of the number of books read (0-97 books) in a 12 month period across different age groups. It highlights that people over 70 years old read the least, whilst the most books were read by 60-69 year olds (they had the highest count for 97 books read).
-Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80. Overall, most people, regardless of age, tend to read about 0-6 books, but there is considerable variability and many people read as many as 25-50 books.
+Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80 (meaning nearly 80 people within those age groups said they didnt read any books). <!-- 80 by itself means nothing this should be given as a percentage of the whole set -->
 
-<!-- ### 2. **Top Goodreads Books (1980-2023)**:
+Overall, most people, regardless of age, tend to read about 0-6 books, but there is considerable variability and many people read as many as 25-50 books.
 
-2. Do men (18 yrs+) read more non-fiction than women? 
-3. Do more people listen to audiobooks than read physical books? 
+### Top Goodreads Books Dataset:
 
-General trends;
-- Most popular genre 
-- Trends by gender, age, education, income  
+#### 3. What are the most popular genres?
+
+#### 4. What are the highest rated books (according to Goodreads?) 
+  
 
 
 
+
+
+
+
+
+<!-- ### 3. Me, myself, and I:
+Now the fun part, how does all this reflect my own reading habits?
 
 
 color='orchid'
 color='lightblue'
-color='mediumpurple'
+color='mediumpurple' -->
 
 
 
 
+<!-- ### Aftermath - What did I learn? -->
 
+<!-- #### Extentions:
 
-### 3. Me, myself, and I:
-Now the fun part, how does all this reflect my own reading habits?
-
-
-
-
-
-### Aftermath - What did I learn? -->
+Do men (18 yrs+) read more non-fiction than women?
+Do more people listen to audiobooks than read physical books? -->
