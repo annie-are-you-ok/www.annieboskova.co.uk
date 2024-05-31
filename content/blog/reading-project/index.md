@@ -66,12 +66,12 @@ import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 ```
-I was then able to use the **.read_csv()** method to read my datasets into dataframes. After this, I explored the datasets, checked if anything needed to be amended or removed, looked for NaNs, and got to cleaning.  
+I was then able to use the **.read_csv()** method to read my datasets into DataFrames. After this, I explored the datasets, checked if anything needed to be amended or removed, looked for NaNs, and got to cleaning.  
 
 ### Reading Habits Dataset
 #### Data Cleaning
 
-With this dataset I was happy with the data types of the columns, but I decided to drop the last 3 columns as I wasn't interested in them. I did this by first creating a copy of my dataframe to allow me to track my changes, created a list of the columns I wanted to drop (I called this list *cols_to_drop*); by creating a list of the columns I wanted to alter, I was able to pass the list name through a method rather than naming each column, which in this case would have been a long and messy piece of code due to the column names being so long.
+With this dataset I was happy with the data types of the columns, but I decided to drop the last 3 columns as I wasn't interested in them. I did this by first creating a copy of my DataFrame to allow me to track my changes, created a list of the columns I wanted to drop (I called this list *cols_to_drop*); by creating a list of the columns I wanted to alter, I was able to pass the list name through a method rather than naming each column, which in this case would have been a long and messy piece of code due to the column names being so long.
 I then used the **.drop()** method, passing my list of columns as the parameter.
 ```python
 cols_to_drop = ['Last book you read, you…',	'Do you happen to read any daily news or newspapers?',	'Do you happen to read any magazines or journals?']
@@ -116,7 +116,7 @@ Finally, I needed to rename one of the columns as it was misspelt ('Employement'
 reading_habits_clean = reading_habits_clean.rename(columns={'Employement':'Employment'})
 ```
 
-My resulting clean dataframe looked like this:
+My resulting clean DataFrame looked like this:
 ![screen reader text](screenshot-3.png "screenshot-3") 
 
 #### Age Distribution
@@ -166,17 +166,17 @@ And lastly, the pie chart below shows that, of all the books read (according to 
 
 <!-- **Reading Trends** -->
 
-Next I wanted to compare the number of books read with level of education, income, marital status, race, and age. I did this by creating several barplots looking at the mean books read. 
+Next I wanted to compare the number of books read with level of education, income, marital status, race, and age. I did this by creating several bar graphs looking at the mean books read. 
 
 The following bar plot shows that post-grade educated people read the most (around 22 books), followed by college graduates (~18 books) and people with 'some college' - it would have been interesting to see what type of books these individuals read but unfortunately, this dataset didn't specify that information. Excluding the group that refused to disclose their educational level who collectively read the least,  the rest read a similar amount (between 10-14 books). This suggests that higher educated people read slightly more but the average person isn't far off. Though there was some variability in number of books read across each category as shown by the error bars.
 
 ![screen reader text](barplot-edu.png "books read x education") 
 
-When looking at income brackets, I found that there wasn't too much difference in number of books read. The barplot below shows that those earning between $100,000 - $150,000 read the most (around 18 books), however, the least read books was around 12.5 (those earning the least).
+When looking at income brackets, I found that there wasn't too much difference in number of books read. The bar graph below shows that those earning between $100,000 - $150,000 read the most (around 18 books), however, the least read books was around 12.5 (those earning the least).
 
 ![screen reader text](barplot-inc.png "books read x income") 
 
-Interesting, the following barplot revealed that individuals who were 'separated' read the fewest books (~10), whereas those 'living with a partner' read the most (a little under 20 books) and also showed the greatest variability in the number of books read. 
+Interesting, the following bar graph revealed that individuals who were 'separated' read the fewest books (~10), whereas those 'living with a partner' read the most (a little under 20 books) and also showed the greatest variability in the number of books read. 
 
 ![screen reader text](barplot-mar.png "books read x marital status") 
 
@@ -198,7 +198,7 @@ age_df.loc[age_df['Age'].between(70,79), 'age_group'] = '70-79'
 age_df.loc[age_df['Age'].between(80,89), 'age_group'] = '80-89'
 age_df.loc[age_df['Age']>=90, 'age_group'] = '>90'
 ```
-This produced a dataframe that looked like this (I have used the **.sample(5)** method to show 5 random rows as I find that it gives a better representation of the data rather than always looking at the same 5 rows).
+This produced a DataFrame that looked like this (I have used the **.sample(5)** method to show 5 random rows as I find that it gives a better representation of the data rather than always looking at the same 5 rows).
 
 I then also set the order (I needed to do this as the data type of my new column was string and not ordered) for the *age_group* values by;
 1. defining my desired order:
@@ -209,7 +209,7 @@ ordered_ages = ['<20', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80
 ```python
 age_df['age_group'] = pd.Categorical(age_df['age_group'], categories=ordered_ages, ordered=True)
 ```
-3. Sorting the dataframe by my now ordered age_group column:
+3. Sorting the DataFrame by my now ordered age_group column:
 ```python
 age_df = age_df.sort_values('age_group')
 ```
@@ -219,15 +219,100 @@ As a result, I was able to produce the following countplots using Seaborn's **Fa
 ![screen reader text](age_countplots.png "books read by age groups") 
 
 This shows the distribution of the number of books read (0-97 books) in a 12 month period across different age groups. It highlights that people over 70 years old read the least, whilst the most books were read by 60-69 year olds (they had the highest count for 97 books read).
-Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80 (meaning nearly 80 people within those age groups said they didnt read any books). <!-- 80 by itself means nothing this should be given as a percentage of the whole set -->
+Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80 (meaning nearly 80 people within those age groups said they didn't read any books). <!-- 80 by itself means nothing this should be given as a percentage of the whole set -->
 
 Overall, most people, regardless of age, tend to read about 0-6 books, but there is considerable variability and many people read as many as 25-50 books.
 
+
 ### Top Goodreads Books Dataset:
 
-#### 3. What are the most popular genres?
+This dataset looks at the top 100 books per year between 1980 and 2023 and it taken from Goodreads.
 
-#### 4. What are the highest rated books (according to Goodreads?) 
+#### Data Cleaning
+
+
+
+
+
+
+
+
+
+#### 3. What are the most popular genres?
+To answer this question, I first created a series of my genres and their unique count (i.e. number of occurrences of each genre) by calling the **.value_counts()** method, and called it *gen_count*.
+```python
+gen_count = goodreads_df.genre.value_counts()
+```
+Then I plotted a bar graph using the following code:
+```python
+sns.barplot(x=gen_count.index, hue=gen_count.index, y=gen_count.values, palette='husl')
+plt.title('Distribution of Genres')
+plt.xlabel('Genres')
+plt.ylabel('Count')
+plt.xticks(rotation=75)  
+plt.tight_layout()  
+plt.show()
+```
+The following bar graph shows that the most popular genres were *fantasy* and *historical*.
+![screen reader text](barplot-gen.png "non-fiction genres") 
+
+However, I wanted to dive further and so I proceeded to sperate fiction from non-fiction.
+
+Starting with non-fiction, I created a mask (*nf_gen_msk*) to filter my DataFrame by the gen_type 'Nonfiction:
+```python
+nf_gen_msk = goodreads_df[goodreads_df['gen_type'] == 'Nonfiction']
+```
+I than turned my DataFrame into a series called *nf_gen_count* and applied my mask to it. This produced a series of genres and their count, filtered by non-fiction.
+```python
+nf_gen_count = nf_gen_msk['genre'].value_counts()
+```
+I was then able to create a bar graph using the following code:
+```python
+sns.barplot(x=nf_gen_count.index, hue=nf_gen_count.index, y=nf_gen_count.values, palette='husl')
+plt.title('Non-Fiction Genres')
+plt.xlabel('Most Popular Genres')
+plt.ylabel('Count')
+plt.xticks(rotation=75)  
+plt.tight_layout()  
+plt.show()
+```
+However, I wanted to check on some of the genres in my plot as at first glance they looked incorrectly labelled as non-fiction. To do this I filtered my DataFrame by the non-fiction *gen_type*:
+```python
+nf_type = nan_gen_type[nan_gen_type['gen_type'] == 'Nonfiction'] 
+```
+Next I filtered by *genre*. I checked the following genres within non-fiction: 'Graphic Novels', 'Crime', 'Politics', 'Classics', 'Childrens', and 'Horror'.
+```python
+type_check = nf_type[nf_type['genre']=='Graphic Novels'] 
+```
+And finally, I called the **.unique()** method on the *genre* column of my filtered DataFrame to extract the original genres. 
+```python
+type_check['genres'].unique()
+```
+This allowed me to verify that they were all correctly labelled as non-fiction by producing the following output:
+![screen reader text](screenshot-5.png "type_check['genres'].unique() output") 
+
+I was then able to plot my bar graph, illustrating the non-fiction genres:
+![screen reader text](barplot-nf.png "non-fiction genres") 
+
+This shows that the most popular non-fiction genre is **Historical**. 
+
+The top 5 non-fiction genres are:
+
+![screen reader text](screenshot-6.png "top 5 non-fiction genres") 
+
+Similarly to the non-fiction genres, I also checked some of the fiction genres (e.g. 'feminism'), but again they were correctly labelled.
+
+The following bar graph illustrates the top fiction genres:
+![screen reader text](barplot-fic.png "fiction genres") 
+As you can see, the most popular genre for fiction is **Fantasy**.
+
+The top 5 fiction genres are:
+
+![screen reader text](screenshot-7.png "top 5 fiction genres") 
+
+In both instances I can't comment on the least popular genres as the original dataset was only looking at the top 100 books every year between 1980-2023, and therefore it's possible that the least popular genres weren't included. However, of the dataset I do have, I can see that *Horror,* followed closely by *'Childrens'* and *'Classics'* were the least popular genres. Similarly, for fiction, the least popular genre was *'Politics'*, followed by *'Feminism'* and *'Crime'*.
+
+#### 4. What are the highest rated books? 
   
 
 
@@ -250,7 +335,9 @@ color='mediumpurple' -->
 
 <!-- ### Aftermath - What did I learn? -->
 
-<!-- #### Extentions:
+<!-- #### Extensions:
 
 Do men (18 yrs+) read more non-fiction than women?
-Do more people listen to audiobooks than read physical books? -->
+Do more people listen to audiobooks than read physical books? 
+delve deeper into the genres
+-->
