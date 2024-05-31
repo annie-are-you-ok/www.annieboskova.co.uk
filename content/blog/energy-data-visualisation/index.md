@@ -115,9 +115,9 @@ I also used the **.agg()** method to allow me to apply some functions onto a **.
 sector = data.groupby(by = 'Sector')['Total'].agg(['sum', 'mean', 'count'])
 sector = sector.sort_values(by = 'sum', ascending = False)
 ```
-This showed me the sum, mean, and count for all the values, arranged by the sectors.
+This showed me the sum, mean, and count for all the values, arranged by the sectors. 
 ![screen reader text](screenshot-8.png "screenshot-8")
-<!--  -->
+<!-- This shows that...  -->
 <!--a summary of what you can see from this data about sample sizes or clear outliers like the military.  -->
 <!--  -->
 
@@ -150,7 +150,7 @@ This shows the energy consumption by industry, but also breaks it down by the sp
 <!-- scatter plot  to check if any one record is skewing the data - all the datasets to check to see if there were serious outliers that would skew the analysis-->
 
 ### Aftermath - What did I learn?
-This assignment taught me how to combine multiple datasets using **.concat()**, allowing me to compare and analyse 3 datasets at once. The importance of data cleansing was also reinforced as I had to tidy up the dataframe; I had to use **.fillna()** to convert NaN values into 0, **.astype(int)** to cast some floats to integers, **.rename()** to change the name of a column, and **.reset_index()** so that the new dataframe would have an index beginning at 0. All of this massively improved the readability of the dataframe. 
+This assignment taught me how to combine multiple datasets using **.concat()**, allowing me to compare and analyse 3 datasets at once. The importance of data cleaning was also reinforced as I had to tidy up the dataframe; I had to use **.fillna()** to convert NaN values into 0, **.astype(int)** to cast some floats to integers, **.rename()** to change the name of a column, and **.reset_index()** so that the new dataframe would have an index beginning at 0. All of this massively improved the readability of the dataframe. 
 
 Something else I learnt whilst completing this assignment was that there are several log levels (notset, Debug, Info, Warning, Error, & Critical) which applications give off to indicate that they are working, have a bug, etc. However, in some instances you might want to stop some of those log messages from appearing, for example, within this project I set the logging level to 'ERROR' as I only wanted to be notified if there was an error or something critical. 
 

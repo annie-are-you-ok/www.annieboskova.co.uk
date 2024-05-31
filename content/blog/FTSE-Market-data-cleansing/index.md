@@ -21,9 +21,8 @@ tags:
   - Data Cleaning
   - Assignment
 ---
-The Financial Times Stock Exchange 100 (FTSE 100) Index data is a share index of the 100 companies listed on the London Stock Exchange with the highest market capitalisation. 
+The Financial Times Stock Exchange 100 (FTSE 100) Index data is a share index of the 100 companies listed on the London Stock Exchange with the highest market capitalisation. The purpose of this assignment was to practise data cleaning with a large dataset and put into practice what I had learnt.  
 <!-- **WHY? more context on why I did this** -->
-The purpose of this assignment was to practise data cleaning with a large dataset and put into practice what I had learnt.  
 
 Before we were able to perform any data analysis, some data cleaning was required which was the focus of this project. What do I mean by data cleaning? That is the removal of missing or incorrect values, and superfluous data. Transforming some of the data involved changing data types which allowed me to utilise arithmetic operators to create new columns within the data set before analysis took place.
 
