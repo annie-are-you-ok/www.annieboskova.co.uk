@@ -1,5 +1,5 @@
 ---
-title: Who's reading, anyway? \Exploring Reading Trends with Seaborn
+title: Who's reading, anyway? Exploring Reading Trends with Seaborn
 summary: Personal project, looking at reading habits across various demographics. #shows on the homepage
 date: 2024-05-30
 
