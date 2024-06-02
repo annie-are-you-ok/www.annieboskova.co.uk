@@ -1,6 +1,7 @@
 ---
-title: Who's reading, anyway? Exploring Reading Trends with Seaborn
-summary: Personal project, looking at books and reading patterns. #shows on the homepage
+title: Who's reading, anyway? 
+Exploring Reading Trends with Seaborn
+summary: Personal project, looking at reading habits across various demographics. #shows on the homepage
 date: 2024-05-30
 
 # Place an image named `featured.jpg/png/gif` in this page's folder and customize its options here.
@@ -24,53 +25,32 @@ tags:
   - Books
   - Reading
 ---
-As an avid reader with an interest in social trends and data visualisation, for this project I wanted to explore reading habits and draw comparisons to my own habits.
+As an avid reader with an interest in social trends and data visualisation, for this project I wanted to explore reading habits across demographics such as gender, age, and race.
 
-I wanted to explore some datasets that would help me answer the following questions:
+I wanted to explore a dataset that would help me answer the following questions:
 1. Do females read more than males? 
 2. Do gender, age, education, income, or race influence how much a person reads?
-3. What are the most popular genres?
-4. What are the highest rated books (according to Goodreads?) 
-
 
 ### Data Collecting
-I used the following datasets from kaggle.com:
-1. **Reading habits**: https://www.kaggle.com/datasets/vipulgote4/reading-habit-dataset/data 
+I used the following dataset from kaggle.com:
+- **Reading habits**: https://www.kaggle.com/datasets/vipulgote4/reading-habit-dataset/data 
 
 This dataset looks at the reading habits and demographics of 2832 people, across 14 columns. It includes age, gender, and number of books read in a 12 moth period (the data is about 4 years old).
 
 ![screen reader text](reading_habits_df_head.png "reading_habits_df.head(2)")
 ![screen reader text](reading_habits_df_shape.png "reading_habits_df.shape")
 
-2. **Top Goodreads Books (1980-2023)**: https://www.kaggle.com/datasets/cristaliss/ultimate-book-collection-top-100-books-up-to-2023 
-
-This dataset looks at the top 100 books for each year between 1980 and 2023, according to Goodreads, and includes genres, book length, average rating, and the number of people interested in reading each book. It is made up of 4400 indexes and 20 columns.
-
-![screen reader text](top_goodreads_df_head1.png)
-![screen reader text](top_goodreads_df_head2.png "top_goodreads_df.head(2)")
-![screen reader text](top_goodreads_df_shape.png "top_goodreads_df.shape")
-<!-- 
-3. **Personal dataset**
-
-This dataset is created from my own personal library spreadsheet which documents my physical and electronic book collection as well as some details about each book (e.g. whether I have read it and what genre it is). It is made up of 278 indexes and 12 columns.
-
-![screen reader text](df_sample(5).png "df.sample(5)")
-![screen reader text](df_shape.png "df.shape-") -->
-
-
 ### Importing Libraries
-After I found some datasets that I liked, I import some python libraries to help with my analysis and visualisations; **Pandas**, **Matplotlib**, and **Seaborn**:
+After I found the dataset I wanted to use, I imported some python libraries to help with my analysis and visualisations; **Pandas**, **NumPy**, **Matplotlib**, and **Seaborn**:
 ```python
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 ```
-I was then able to use the **.read_csv()** method to read my datasets into DataFrames. After this, I explored the datasets, checked if anything needed to be amended or removed, looked for NaNs, and got to cleaning.  
+I was then able to use the **.read_csv()** method to read my dataset into a DataFrame. After this, I explored the dataset, checked if anything needed to be amended or removed, looked for NaNs, and got to cleaning.  
 
-### Reading Habits Dataset
 #### Data Cleaning
-
 With this dataset I was happy with the data types of the columns, but I decided to drop the last 3 columns as I wasn't interested in them. I did this by first creating a copy of my DataFrame to allow me to track my changes, created a list of the columns I wanted to drop (I called this list *cols_to_drop*); by creating a list of the columns I wanted to alter, I was able to pass the list name through a method rather than naming each column, which in this case would have been a long and messy piece of code due to the column names being so long.
 I then used the **.drop()** method, passing my list of columns as the parameter.
 ```python
@@ -80,7 +60,7 @@ clean_df = reading_habits_df.copy()
 clean_df = clean_df.drop(cols_to_drop, axis=1)
 ```
 I debated keeping the 'Last book you read, you…' column, which outputs the following values:
-![screen reader text](screenshot-1.png "screenshot-1") 
+![screen reader text](screenshot-1.png ".unique() / .value_counts()") 
 
 But after utilising the **.unique()** (to return all the unique values, including NaNs) and **.value_counts()** (to return the count of all unique values, excluding any NaNs) methods, it didn't make sense to include this in my analysis as it wasn't clear what some of the values represented ('8' and '9') and changing them into 'unknown' wouldn't contribute any value to the data. I also decided that I was more interested in how many books people read in a year and whether they were physical books, ebooks, or audiobooks - though I wish the data included how many books where of each format.
 
@@ -92,7 +72,7 @@ clean_df[nan_cols] = clean_df[nan_cols].fillna('Don’t know')
 
 During my initial exploration, I also found that one of the columns had a typo in some of the values. The **.value_counts()** method revealed that 212 values in the *'Incomes'* column were equivalent to *9$100,000 to under $150,000* which clearly was a typo. 
 
-![screen reader text](screenshot-2.png "screenshot-2") 
+![screen reader text](screenshot-2.png "reading_habits_df['Incomes'].value_counts() ") 
 
 To combat this, I called the **.replace()** method to allow me to fix this typo by removing the '9' at the start:
 ```python
@@ -117,30 +97,26 @@ reading_habits_clean = reading_habits_clean.rename(columns={'Employement':'Emplo
 ```
 
 My resulting clean DataFrame looked like this:
-![screen reader text](screenshot-3.png "screenshot-3") 
+![screen reader text](screenshot-3.png "reading_habits_clean.sample(5)") 
 
 #### Age Distribution
 I decided to create a boxplot next to allow me to see the central tendency, dispersion, and outliers within age. This showed that the majority of the sample were aged between 30-60 years, with some outliers on both ends. 
 
-![screen reader text](boxplot-1.png "age boxplot") 
+![screen reader text](boxplot-1.png "boxplot: age distribution") 
 
 By calling the **.describe()** method, I was able to see that the youngest person was 16 years old and the oldest was 93 years old, with the average age being 47.3 years old, whilst the mode age was 50 years old.  
 
 A histogram showed that a large amount of the sample were in their 20s, though the majority of people aged between 50-60 years old. And though it looks like there were many twenty-something year olds, 20-29 year olds only made up 13% of the group, whilst 50-60 year olds made up 21.6%.
 
-![screen reader text](histogram-1.png "age distribution") 
+![screen reader text](histogram-1.png "histogram: age distribution") 
 
-<!-- #### Who Reads More? -->
-
-#### 1. Do females read more than males?
-
-I first used a histogram to look at the distribution of the number of books read over a 12 month period. 
-![screen reader text](histogram-2.png "histogram") 
+I also used a histogram to look at the distribution of the number of books read over a 12 month period, based on ages. 
+![screen reader text](histogram-2.png "histogram: no. books read x age") 
 
 From this histogram I can see that the data is skewed to the left, i.e. most people read around 0-15 books.
 Running some descriptive statistics (by calling the **.describe()** and **.mode()** methods) showed that the average books read (i.e. the mean) were 16.7, though a large reason for this might be that the highest count seemed to be for 0-2 books (i.e. around 700 people said they read 0 to 2 books). This is also supported by the mode being 0.
 
-![screen reader text](screenshot-4.png "screenshot-books read descriptive stats") 
+![screen reader text](screenshot-4.png "reading_habits_clean['Age'].describe()") 
 
 By running the following line of code I was able to work out that 390 people said they didn't read any books (i.e. 13.8% of the people in the dataset).
 ```python
@@ -153,36 +129,34 @@ The histogram also showed several outliers, for example, around 100 people said 
 high_readers = len(reading_habits_clean[reading_habits_clean['How many books did you read during last 12months?']>=90])
 high_readers
 ```
+### 1. Do females read more than males?
 
 I then used a countplot which supported the theory that females read more than males - interestingly, it also showed that nearly twice as many males read 0-2 books in the 12 months leading up to the data collection, than females.  
-![screen reader text](countplot-1.png "countplot") 
-
+![screen reader text](countplot-1.png "countplot: books read x gender") 
 
 And lastly, the pie chart below shows that, of all the books read (according to the 'How many books did you read during last 12months?' column), 61.7% of them were read by females. 
 
-![screen reader text](piechart-1.png "piechart") 
+![screen reader text](piechart-1.png "piechart: books read x gender") 
 
-#### 2. Do gender, age, education, income, or race influence how much a person reads?
-
-<!-- **Reading Trends** -->
+### 2. Do gender, age, education, income, or race influence how much a person reads?
 
 Next I wanted to compare the number of books read with level of education, income, marital status, race, and age. I did this by creating several bar graphs looking at the mean books read. 
 
 The following bar plot shows that post-grade educated people read the most (around 22 books), followed by college graduates (~18 books) and people with 'some college' - it would have been interesting to see what type of books these individuals read but unfortunately, this dataset didn't specify that information. Excluding the group that refused to disclose their educational level who collectively read the least,  the rest read a similar amount (between 10-14 books). This suggests that higher educated people read slightly more but the average person isn't far off. Though there was some variability in number of books read across each category as shown by the error bars.
 
-![screen reader text](barplot-edu.png "books read x education") 
+![screen reader text](barplot-edu.png "bar graph: books read x education") 
 
 When looking at income brackets, I found that there wasn't too much difference in number of books read. The bar graph below shows that those earning between $100,000 - $150,000 read the most (around 18 books), however, the least read books was around 12.5 (those earning the least).
 
-![screen reader text](barplot-inc.png "books read x income") 
+![screen reader text](barplot-inc.png "bar graph: books read x income") 
 
 Interesting, the following bar graph revealed that individuals who were 'separated' read the fewest books (~10), whereas those 'living with a partner' read the most (a little under 20 books) and also showed the greatest variability in the number of books read. 
 
-![screen reader text](barplot-mar.png "books read x marital status") 
+![screen reader text](barplot-mar.png "bar graph: books read x marital status") 
 
 When Comparing number of books read by race, I found that those identifying as 'white' read the most (~18 books), and those identifying as 'Asian or Pacific Islander' read the least(~10 books). However, those who read the most (~20 books) didn't disclose their race, and similarly some people said they "didn't know" their race or selected 'other'. Interestingly, there was also a lot of variability across each race. 
 
-![screen reader text](barplot-race.png "books read x race") 
+![screen reader text](barplot-race.png "bar graph: books read x race") 
 
 In order to explore the correlation between age and books read, I first created a new column (*age_group*) and grouped the ages by decade to make it more manageable to handle. I did this using the following code:
 ```python 
@@ -216,128 +190,32 @@ age_df = age_df.sort_values('age_group')
 
 As a result, I was able to produce the following countplots using Seaborn's **FacetGrid** feature.
 
-![screen reader text](age_countplots.png "books read by age groups") 
+![screen reader text](age_countplots.png "countplots of books read by age") 
 
 This shows the distribution of the number of books read (0-97 books) in a 12 month period across different age groups. It highlights that people over 70 years old read the least, whilst the most books were read by 60-69 year olds (they had the highest count for 97 books read).
 Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80 (meaning nearly 80 people within those age groups said they didn't read any books). <!-- 80 by itself means nothing this should be given as a percentage of the whole set -->
 
-Overall, most people, regardless of age, tend to read about 0-6 books, but there is considerable variability and many people read as many as 25-50 books.
+Overall, most people, regardless of age, tend to read about 0-10 books, but there is considerable variability and many people read as many as 25-50 books.
 
+### Conclusions
+- Most people read between 0-10 books a year (though some people read as many as 97 books!)
 
-### Top Goodreads Books Dataset:
+- Women reads more than men
 
-This dataset looks at the top 100 books per year between 1980 and 2023 and it taken from Goodreads.
+- Higher educated people read more than lower educated people 
+- Those earning between $50,000 - $150,000 read more than lower earners 
+- People that have been widow read the most, whilst those that are separated from a partner read the least
+- People who identify as ‘white’ read the most, whilst those that identify as 'Asian or Pacific Islander' read the least
+- People aged over 70 years read the least, whilst 40-60 year olds seem to read the most.
 
-#### Data Cleaning
+  ![screen reader text](books.jpg "https://app.leonardo.ai/image-generation") 
 
+### Aftermath - What did I learn?
+Through this project I was able to explore something I'm passionate about, books. 
+This was also my first experience planning and designing a data analysis project all by myself. Part of that included finding a dataset. For this I used kaggle.com which I found to be a great resource for data.
 
+This project not only showed me how challenging finding a dataset to work with is, but also just how much work can go into preparing the dataset for analysis (often A LOT of cleaning). I also learnt how important note taking is when working on a complex project like this, especially if you are working on it for several days, as it's easy to forget what was done the previous day.
 
+I also learnt about Seaborn's **FacetGrid** feature which allowed me to create a multi-plot grid, using countplots to show a visualisation of the relationships between number of books read and several age groups side by side for easy comparison. 
 
-
-
-
-
-
-#### 3. What are the most popular genres?
-To answer this question, I first created a series of my genres and their unique count (i.e. number of occurrences of each genre) by calling the **.value_counts()** method, and called it *gen_count*.
-```python
-gen_count = goodreads_df.genre.value_counts()
-```
-Then I plotted a bar graph using the following code:
-```python
-sns.barplot(x=gen_count.index, hue=gen_count.index, y=gen_count.values, palette='husl')
-plt.title('Distribution of Genres')
-plt.xlabel('Genres')
-plt.ylabel('Count')
-plt.xticks(rotation=75)  
-plt.tight_layout()  
-plt.show()
-```
-The following bar graph shows that the most popular genres were *fantasy* and *historical*.
-![screen reader text](barplot-gen.png "non-fiction genres") 
-
-However, I wanted to dive further and so I proceeded to sperate fiction from non-fiction.
-
-Starting with non-fiction, I created a mask (*nf_gen_msk*) to filter my DataFrame by the gen_type 'Nonfiction:
-```python
-nf_gen_msk = goodreads_df[goodreads_df['gen_type'] == 'Nonfiction']
-```
-I than turned my DataFrame into a series called *nf_gen_count* and applied my mask to it. This produced a series of genres and their count, filtered by non-fiction.
-```python
-nf_gen_count = nf_gen_msk['genre'].value_counts()
-```
-I was then able to create a bar graph using the following code:
-```python
-sns.barplot(x=nf_gen_count.index, hue=nf_gen_count.index, y=nf_gen_count.values, palette='husl')
-plt.title('Non-Fiction Genres')
-plt.xlabel('Most Popular Genres')
-plt.ylabel('Count')
-plt.xticks(rotation=75)  
-plt.tight_layout()  
-plt.show()
-```
-However, I wanted to check on some of the genres in my plot as at first glance they looked incorrectly labelled as non-fiction. To do this I filtered my DataFrame by the non-fiction *gen_type*:
-```python
-nf_type = nan_gen_type[nan_gen_type['gen_type'] == 'Nonfiction'] 
-```
-Next I filtered by *genre*. I checked the following genres within non-fiction: 'Graphic Novels', 'Crime', 'Politics', 'Classics', 'Childrens', and 'Horror'.
-```python
-type_check = nf_type[nf_type['genre']=='Graphic Novels'] 
-```
-And finally, I called the **.unique()** method on the *genre* column of my filtered DataFrame to extract the original genres. 
-```python
-type_check['genres'].unique()
-```
-This allowed me to verify that they were all correctly labelled as non-fiction by producing the following output:
-![screen reader text](screenshot-5.png "type_check['genres'].unique() output") 
-
-I was then able to plot my bar graph, illustrating the non-fiction genres:
-![screen reader text](barplot-nf.png "non-fiction genres") 
-
-This shows that the most popular non-fiction genre is **Historical**. 
-
-The top 5 non-fiction genres are:
-
-![screen reader text](screenshot-6.png "top 5 non-fiction genres") 
-
-Similarly to the non-fiction genres, I also checked some of the fiction genres (e.g. 'feminism'), but again they were correctly labelled.
-
-The following bar graph illustrates the top fiction genres:
-![screen reader text](barplot-fic.png "fiction genres") 
-As you can see, the most popular genre for fiction is **Fantasy**.
-
-The top 5 fiction genres are:
-
-![screen reader text](screenshot-7.png "top 5 fiction genres") 
-
-In both instances I can't comment on the least popular genres as the original dataset was only looking at the top 100 books every year between 1980-2023, and therefore it's possible that the least popular genres weren't included. However, of the dataset I do have, I can see that *Horror,* followed closely by *'Childrens'* and *'Classics'* were the least popular genres. Similarly, for fiction, the least popular genre was *'Politics'*, followed by *'Feminism'* and *'Crime'*.
-
-#### 4. What are the highest rated books? 
-  
-
-
-
-
-
-
-
-
-<!-- ### 3. Me, myself, and I:
-Now the fun part, how does all this reflect my own reading habits?
-
-
-color='orchid'
-color='lightblue'
-color='mediumpurple' -->
-
-
-
-
-<!-- ### Aftermath - What did I learn? -->
-
-<!-- #### Extensions:
-
-Do men (18 yrs+) read more non-fiction than women?
-Do more people listen to audiobooks than read physical books? 
-delve deeper into the genres
--->
+Unfortunately, my dataset lacked some of the information I wanted to explore (I wanted to compare the popularity of fiction versus non-fiction books by gender, as well as which reading format was most popular), but these are things I can always look into later.
