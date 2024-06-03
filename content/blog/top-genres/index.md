@@ -24,9 +24,10 @@ tags:
   - Books
   - Reading
 ---
-As a lover of fantasy (and dragon) and a keen Goodreads user, for this project I wanted to explore the top genres for fiction and non-fiction, and draw comparisons to my own reading habits.
+As a lover of fantasy (and dragons) and a keen Goodreads user, for this project I wanted to explore the top genres for fiction and non-fiction.
+<!-- and draw comparisons to my own reading habits. -->
 
-I wanted to explore some datasets that would help me answer the following questions:
+I wanted to explore a datasetsthat would help me answer the following questions:
 1. What are the most popular genres?
 2. What are the highest rated books?
 
