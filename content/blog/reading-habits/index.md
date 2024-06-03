@@ -40,7 +40,7 @@ This dataset looks at the reading habits and demographics of 2832 people, across
 ![screen reader text](reading_habits_df_shape.png "reading_habits_df.shape")
 
 ### Importing Libraries
-After I found the dataset I wanted to use, I imported some python libraries to help with my analysis and visualisations; **Pandas**, **NumPy**, **Matplotlib**, and **Seaborn**:
+After I found the dataset I wanted to use, I imported some Python libraries to help with my analysis and visualisations; **Pandas**, **NumPy**, **Matplotlib**, and **Seaborn**:
 ```python
 import pandas as pd
 import numpy as np
@@ -49,7 +49,7 @@ import seaborn as sns
 ```
 I was then able to use the **.read_csv()** method to read my dataset into a DataFrame. After this, I explored the dataset, checked if anything needed to be amended or removed, looked for NaNs, and got to cleaning.  
 
-#### Data Cleaning
+### Data Cleaning
 With this dataset I was happy with the data types of the columns, but I decided to drop the last 3 columns as I wasn't interested in them. I did this by first creating a copy of my DataFrame to allow me to track my changes, created a list of the columns I wanted to drop (I called this list *cols_to_drop*); by creating a list of the columns I wanted to alter, I was able to pass the list name through a method rather than naming each column, which in this case would have been a long and messy piece of code due to the column names being so long.
 I then used the **.drop()** method, passing my list of columns as the parameter.
 ```python
@@ -98,7 +98,7 @@ reading_habits_clean = reading_habits_clean.rename(columns={'Employement':'Emplo
 My resulting clean DataFrame looked like this:
 ![screen reader text](screenshot-3.png "reading_habits_clean.sample(5)") 
 
-#### Age Distribution
+### Age Distribution
 I decided to create a boxplot next to allow me to see the central tendency, dispersion, and outliers within age. This showed that the majority of the sample were aged between 30-60 years, with some outliers on both ends. 
 
 ![screen reader text](boxplot-1.png "boxplot: age distribution") 
@@ -191,8 +191,18 @@ As a result, I was able to produce the following countplots using Seaborn's **Fa
 
 ![screen reader text](age_countplots.png "countplots of books read by age") 
 
+
+
+
+
+
 This shows the distribution of the number of books read (0-97 books) in a 12 month period across different age groups. It highlights that people over 70 years old read the least, whilst the most books were read by 60-69 year olds (they had the highest count for 97 books read).
 Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80 (meaning nearly 80 people within those age groups said they didn't read any books). <!-- 80 by itself means nothing this should be given as a percentage of the whole set -->
+
+
+
+
+
 
 Overall, most people, regardless of age, tend to read about 0-10 books, but there is considerable variability and many people read as many as 25-50 books.
 
