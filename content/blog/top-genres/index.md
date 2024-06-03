@@ -1,5 +1,5 @@
 ---
-title: Reading about dragons. Exploring the most popular genres on Goodreads with Seaborn
+title: Reading about dragons. Exploring the most popular genres on Goodreads #with Seaborn
 summary: Personal project, looking at popular genres of fiction and non-fiction books. #shows on the homepage
 date: 2024-05-31
 
@@ -73,7 +73,6 @@ cols_to_drop2 = ['Unnamed: 0', 'isbn', 'series_title', 'description','format', '
 goodreads_clean_df = top_goodreads_df.copy() #tracking changes
 goodreads_clean_df = goodreads_clean_df.drop(cols_to_drop2, axis=1)
 ```
-
 <!-- below: wasn't relevant to my research -->
 <!-- Next, I decided to rename the column *series_release_number* to *series_number* and convert any NaNs in the column to 0 as this with indicate that book wasn't a part of a series. 
 ```python
@@ -139,7 +138,7 @@ Using the **.value_counts()** and **.head()** methods I determined which genres 
 
 ```python
 top_genres_df = genre_type.copy()
-top_genres_df['genre'] = top_genres_df['genres'].str.extract(r'(Fantasy|Mystery|Thriller|Graphic Novels|Romance|Historical Fiction|\
+top_genres_df['genre'] = top_genres_df['genres'].str.extract(r'(Fantasy|Mystery|Thriller|Graphic Novels|Comics|Romance|Historical Fiction|\
               Historical|History|Crime|Science Fiction|Science|Biography|Classics|Self Help|Feminism|\
               Horror|Comedy|Humor|Politics|Poetry|Contemporary|Picture Books|Religion)', expand=False)
 ```
@@ -151,11 +150,12 @@ I also ignored any age specific words (such as *childrens* or *young adult*) as 
 top_genres_df['genre'] = top_genres_df['genre'].replace('Historical Fiction', 'Historical')
 top_genres_df['genre'] = top_genres_df['genre'].replace('History', 'Historical')
 ```
-Likewise, I also renamed *Humor* as *Comedy* to join the two genres.
+Likewise, I also renamed *Humor* as *Comedy*, and *Comics* as *Graphic Novels*, to join the genres.
 ```python
 top_genres_df['genre'] = top_genres_df['genre'].replace('Humor', 'Comedy')
+top_genres_df['genre'] = top_genres_df['genre'].replace('Comics', 'Graphic Novels')
 ```
-<!-- The genre 'Science Fiction was also renamed to 'SciFi' as I noticed that books with that genre were being labelled as 'Science'.
+<!-- The genre 'Science Fiction was also renamed to 'SciFi' as I noticed that books with that genre were being labelled as 'Science' (probably because my code saw 'Science' first).
 ```python
 top_genres_df.loc[scifi.index, 'genre'] = 'SciFi' -->
 ```
@@ -186,7 +186,7 @@ plt.xticks(rotation=75)
 plt.tight_layout()  
 plt.show()
 ```
-The following bar graph indicates that the most popular genre, by far, was *Fantasy*. Least popular were *True Crime*, *Feminism*, and *Religion.*
+The following bar graph indicates that the most popular genre, by far, was *Fantasy*. The least popular were *Feminism*, *Religion*, and *Politics*.
 ![screen reader text](barplot-gen.png "bar graph: genre distribution") 
 
 However, I wanted to dive further and so I proceeded to separate fiction from non-fiction.
@@ -222,9 +222,10 @@ This allowed me to verify that they were all correctly labelled as non-fiction b
 ![screen reader text](screenshot-5.png "type_check['genres'].unique()") 
 
 I was then able to plot my bar graph, illustrating the non-fiction genres:
+
 ![screen reader text](barplot-nf.png "bar graph: non-fiction genres") 
 
-This indicates that the most popular non-fiction genre is **Historical**, followed by **Biography**. 
+This indicates that the most popular non-fiction genre was **Historical**, followed by **Biography**. 
 
 The top 5 non-fiction genres are:
 
@@ -236,7 +237,7 @@ The following bar graph illustrates the top fiction genres:
 
 ![screen reader text](barplot-fic.png "bar graph: fiction genres") 
 
-As you can see, the most popular genre for fiction is **Fantasy**. 
+As you can see, the most popular genre for fiction was **Fantasy**.  
 
 The top 5 fiction genres are:
 
@@ -246,43 +247,65 @@ In both instances I can't comment on the least popular genres as the original da
 I can see that *Classics* and *Picture Books* were the least popular Non-Fiction genres. Similarly, for fiction, the least popular genre was *Politics*, followed by *Feminism*, and *Religion*.
 
 
-<!-- ### 2. What are the highest rated books? 
-  
+### 2. What are the highest rated books? 
+To address this question, I first sorted my DataFrame by the *rating_score* column, in descending order.
+```python
+ordered_ratings_df = goodreads_df.copy().sort_values(by='rating_score', ascending=False)
+ordered_ratings_df.head()
+```
+As a result, I was able to check the highest (**.head()**) and the lowest (**.tail()**) ratings - these were 4.81 and 2.97, respectively. The reason the lowest rating wasn't 0 or 1 is that the dataset was looking at the top 100 books (per year), therefore I wouldn't expect such a low rating. Though it would have been interesting to see what the lowest rated books were.
+
+Building on this, I separated fiction from non-fiction so that I could find the highest (and lowest) rated books per genre type. I did this by creating a mask for non-fiction and passing my *gen_type* series through it to produce a DataFrame of non-fiction only books.
+```python
+nf_ratings_msk = ordered_ratings_df[ordered_ratings_df['gen_type'] == 'Nonfiction'] 
+nf_ratings_msk 
+```
+This allowed me to produce a DataFrame of the top 10 non-fiction ratings and the corresponding book titles.
+```python
+pd.set_option('display.max_colwidth', None) #sets max column width to none 
+nf_ratings_msk[['title', 'authors' ,'rating_score']].head(10)
+```
+Next, I created a horizontal bar graph showing the 10 highest rated non-fiction books.
+
+![screen reader text](top10-nf-ratings.png "bar graph: highest rated non-fiction") 
+
+The highest rated book in non-fiction was 'Know My Name' by Chanel Miller, with a rating of 4.71.
+
+![screen reader text](nf_wordcloud.png "") 
 
 
+As with non-fiction, I created a mask for fiction and produced a DataFrame of fiction books, organised by ratings.
 
+I then plotted the 10 highest rated fiction books on a bar graph.
 
+![screen reader text](top10-fic-ratings.png "bar graph: highest rated fiction") 
 
-![screen reader text]( .png "")  -->
+The highest rated book in fiction was 'The Complete Calvin and Hobbes' by Bill Watterson, with an average rating of 4.81
 
-
+![screen reader text](fic_wordcloud.png "") 
+ 
 
 <!-- ### 3. Me, myself, and I:
-Now the fun part, how does all this reflect my own reading habits?
+Now the fun part, how does all this reflect my own reading habits? -->
 
 
-color='orchid'
-color='lightblue'
-color='mediumpurple' -->
 
-
-<!-- ### Conclusions
+### Conclusions
 - The most popular genre in fiction is fantasy
 - The most popular genre in non-fiction is historical
 
-- 
-- 
+- The highest rated book in non-fiction was 'Know My Name' 
+- The highest rated book in fiction was 'The Complete Calvin and Hobbes' 
+ 
 
 ![screen reader text](dragon_reads.jpg "https://app.leonardo.ai/image-generation") 
 
 ### Aftermath - What did I learn?
-Through this project
+This project provided me with the opportunity to delve into various genres within fiction and non-fiction literature. It enabled me to hone my plotting skills, using Seabornand Matplotlib, exploring a topic that deeply interests me. And most important, I discovered that Fantasy (my personal favourite) is the most popular genres. :dragon_face:
 
-Though I didn't end up using it, I did learn about **.explode().** This method can transform list-like elements (e.g. the genre lists in the original *genres* list of my reading habits DataFrame) into individual rows, with each element of the list getting its own row, like this:
-![screen reader text](screenshot-explode.png "") 
+Even though I ultimately didn't apply it, I did learn about **.explode().** This method can transform list-like elements (e.g. the genre lists in the original *genres* column of my dataset) into separate rows, where each element of the list occupies its own row. I also learnt about Pandas **.set_option('display.max_colwidth', None)** function which allowed me adjust the display settings to avoid truncation so that I could see the full title of books.  
 
- -->
-
+And finally, I learnt that there are a multitude of possibilities and adjustments available when working on a project - from customising plots, to selecting the data visualisation techniques to use, or determining which column(s) to focus on. Having a good idea of what you are actually interested in also helps immensely, and recognising that there is never just one way to do approach a task. 
 
 
 <!-- #### Extensions:
@@ -291,4 +314,3 @@ Do men (18 yrs+) read more non-fiction than women?
 Do more people listen to audiobooks than read physical books? 
 delve deeper into the genres
 -->
-
