@@ -217,7 +217,7 @@ Overall, most people, regardless of age, tend to read about 0-10 books, but ther
 - People who identify as ‘white’ read the most, whilst those that identify as 'Asian or Pacific Islander' read the least
 - People aged over 70 years read the least, whilst 40-60 year olds seem to read the most.
 
-  ![screen reader text](books.jpg "https://app.leonardo.ai/image-generation") 
+![screen reader text](books.jpg "https://app.leonardo.ai/image-generation") 
 
 ### Aftermath - What did I learn?
 Through this project I was able to explore something I'm passionate about, books. 
