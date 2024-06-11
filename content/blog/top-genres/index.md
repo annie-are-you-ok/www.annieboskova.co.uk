@@ -243,6 +243,8 @@ The top 5 non-fiction genres are:
 
 As you can see, there are far less non-fiction genres in my personal collection and my most popular genre in Poetry. -->
 
+![screen reader text](nf-genres-wordcloud.png "") 
+
 Similarly to the non-fiction genres, I also checked some of the fiction genres (e.g. 'feminism'), but again they were correctly labelled.
 
 The following bar graph illustrates the top fiction genres:
@@ -254,6 +256,8 @@ As you can see, the most popular genre for fiction was **Fantasy**.
 The top 5 fiction genres are:
 
 ![screen reader text](screenshot-7.png "top 5 fiction genres") 
+
+![screen reader text](fic-genres-wordcloud.png "") 
 
 <!-- **How does this compare to my own taste when it comes to fiction?**
 
@@ -289,7 +293,7 @@ Next, I created a horizontal bar graph showing the 10 highest rated non-fiction 
 
 The highest rated book in non-fiction was 'Know My Name' by Chanel Miller, with a rating of 4.71.
 
-![screen reader text](nf_wordcloud.png "") 
+![screen reader text](nf_wordcloud.png "'Know My Name' genres from the original dataset") 
 
 As with non-fiction, I created a mask for fiction and produced a DataFrame of fiction books, organised by ratings.
 
@@ -299,7 +303,7 @@ I then plotted the 10 highest rated fiction books on a bar graph.
 
 The highest rated book in fiction was 'The Complete Calvin and Hobbes' by Bill Watterson, with an average rating of 4.81
 
-![screen reader text](fic_wordcloud.png "") 
+![screen reader text](fic_wordcloud.png "'The Complete Calvin and Hobbes' genres from the original dataset") 
  
 
 ### Me, myself, and I:
@@ -330,7 +334,6 @@ Even though I ultimately didn't apply it, I did learn about **.explode().** This
 
 And finally, I learnt that there are a multitude of possibilities and adjustments available when working on a project - from customising plots, to selecting the data visualisation techniques to use, or determining which column(s) to focus on. Having a good idea of what you are actually interested in also helps immensely, and recognising that there is never just one way to do approach a task. 
 
-![screen reader text](nf-genres-wordcloud.png "non-fiction wordcloud") ![screen reader text](fic-genres-wordcloud.png "fiction wordcloud") 
 
 
 <!-- #### Extensions:
