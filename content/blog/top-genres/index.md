@@ -24,8 +24,7 @@ tags:
   - Books
   - Reading
 ---
-As a lover of fantasy (and dragons) and a keen Goodreads user, for this project I wanted to explore the top genres for fiction and non-fiction.
-<!-- and draw comparisons to my own reading habits. -->
+As a lover of fantasy (and dragons) and a keen Goodreads user, for this project I wanted to explore the top genres for fiction and non-fiction and draw comparisons to my own reading habits.
 
 I wanted to explore a datasetsthat would help me answer the following questions:
 1. What are the most popular genres?
@@ -40,13 +39,13 @@ This dataset looked at the top 100 books for each year between 1980 and 2023, ac
 ![screen reader text](top_goodreads_df_head1.png)
 ![screen reader text](top_goodreads_df_head2.png "top_goodreads_df.head(2)")
 ![screen reader text](top_goodreads_df_shape.png "top_goodreads_df.shape")
-<!-- 
-3. **Personal dataset**
+
+- **Personal dataset:**
 
 This dataset is created from my own personal library spreadsheet which documents my physical and electronic book collection as well as some details about each book (e.g. whether I have read it and what genre it is). It is made up of 278 indexes and 12 columns.
 
 ![screen reader text](df_sample(5).png "df.sample(5)")
-![screen reader text](df_shape.png "df.shape-") -->
+![screen reader text](df_shape.png "df.shape-")
 
 
 ### Importing Libraries 
@@ -156,10 +155,16 @@ Likewise, I also renamed *Humor* as *Comedy*, and *Comics* as *Graphic Novels*, 
 top_genres_df['genre'] = top_genres_df['genre'].replace('Humor', 'Comedy')
 top_genres_df['genre'] = top_genres_df['genre'].replace('Comics', 'Graphic Novels')
 ```
-<!-- The genre 'Science Fiction was also renamed to 'SciFi' as I noticed that books with that genre were being labelled as 'Science' (probably because my code saw 'Science' first).
+Alternatively, I could have used a dictionary to map the old genre names to new ones and pass the dictionary to the **.replace()** method:
 ```python
-top_genres_df.loc[scifi.index, 'genre'] = 'SciFi' -->
+replace_genres = {'Historical Fiction':'Historical',
+               'History':'Historical',
+               'Humor':'Comedy',
+               'Comics':'Graphic Novels'
+               }
+top_genres_df['genre'] = top_genres_df['genre'].replace(replace_genres)
 ```
+
 Whilst building my generalised list of genres, to ensure that I categorised all books, I called the **.isna()** method against the series I was creating, *genre*. Once I had accounted for the majority of books in the dataset, the more obscure genres were transformed into 'Other' using **.fillna()**.
 
 ```python
@@ -232,6 +237,12 @@ The top 5 non-fiction genres are:
 
 ![screen reader text](screenshot-6.png "top 5 non-fiction genres") 
 
+<!-- **How does this compare to my own taste when it comes to non-fiction?**
+
+![screen reader text](barplot-annies-nf.png "bar graph: non-fiction genres from my personal collection") 
+
+As you can see, there are far less non-fiction genres in my personal collection and my most popular genre in Poetry. -->
+
 Similarly to the non-fiction genres, I also checked some of the fiction genres (e.g. 'feminism'), but again they were correctly labelled.
 
 The following bar graph illustrates the top fiction genres:
@@ -243,6 +254,12 @@ As you can see, the most popular genre for fiction was **Fantasy**.
 The top 5 fiction genres are:
 
 ![screen reader text](screenshot-7.png "top 5 fiction genres") 
+
+<!-- **How does this compare to my own taste when it comes to fiction?**
+
+![screen reader text](barplot-annies-fic.png "bar graph: fiction genres from my personal collection") 
+
+In the case of fiction, my own taste and that of Goodreads start to match, at least when it come to *Fantasy*; turns out the majority of Goodreads (according to the dataset I used) and I are fans of dragons and the fantastical! :dragon: -->
 
 In both instances I can't comment on the least popular genres as the original dataset was only looking at the top 100 books every year between 1980-2023, and therefore it's possible that the least popular genres weren't included. However, of the dataset I do have, 
 I can see that *Classics* and *Picture Books* were the least popular Non-Fiction genres. Similarly, for fiction, the least popular genre was *Politics*, followed by *Feminism*, and *Religion*.
@@ -274,7 +291,6 @@ The highest rated book in non-fiction was 'Know My Name' by Chanel Miller, with 
 
 ![screen reader text](nf_wordcloud.png "") 
 
-
 As with non-fiction, I created a mask for fiction and produced a DataFrame of fiction books, organised by ratings.
 
 I then plotted the 10 highest rated fiction books on a bar graph.
@@ -286,9 +302,15 @@ The highest rated book in fiction was 'The Complete Calvin and Hobbes' by Bill W
 ![screen reader text](fic_wordcloud.png "") 
  
 
-<!-- ### 3. Me, myself, and I:
-Now the fun part, how does all this reflect my own reading habits? -->
+### Me, myself, and I:
+Now the fun part, how does all this reflect my own reading habits?
 
+![screen reader text](barplot-annies-nf.png "bar graph: non-fiction genres from my personal collection") 
+As you can see, my personal collection has significantly fewer non-fiction genres, with *Poetry* being my most popular non-fiction genre.
+
+In the case of fiction, my tastes start to align with those of Goodreads, at least when it come to *Fantasy*. Turns out the majority of Goodreads (according to the dataset I used) and I are fans of dragons and the fantastical! :dragon:
+
+![screen reader text](barplot-annies-fic.png "bar graph: fiction genres from my personal collection") 
 
 
 ### Conclusions
@@ -302,11 +324,13 @@ Now the fun part, how does all this reflect my own reading habits? -->
 ![screen reader text](dragon_reads.jpg "https://app.leonardo.ai/image-generation") 
 
 ### Aftermath - What did I learn?
-This project provided me with the opportunity to delve into various genres within fiction and non-fiction literature. It enabled me to hone my plotting skills, using Seabornand Matplotlib, exploring a topic that deeply interests me. And most important, I discovered that Fantasy (my personal favourite) is the most popular genres. :dragon_face:
+This project provided me with the opportunity to delve into various genres within fiction and non-fiction literature. It enabled me to hone my plotting skills, using Seaborn and Matplotlib, exploring a topic that deeply interests me. And most important, I discovered that Fantasy (my personal favourite) is the most popular genres. :dragon_face:
 
 Even though I ultimately didn't apply it, I did learn about **.explode().** This method can transform list-like elements (e.g. the genre lists in the original *genres* column of my dataset) into separate rows, where each element of the list occupies its own row. I also learnt about Pandas **.set_option('display.max_colwidth', None)** function which allowed me adjust the display settings to avoid truncation so that I could see the full title of books.  
 
 And finally, I learnt that there are a multitude of possibilities and adjustments available when working on a project - from customising plots, to selecting the data visualisation techniques to use, or determining which column(s) to focus on. Having a good idea of what you are actually interested in also helps immensely, and recognising that there is never just one way to do approach a task. 
+
+![screen reader text](nf-genres-wordcloud.png "non-fiction wordcloud") ![screen reader text](fic-genres-wordcloud.png "fiction wordcloud") 
 
 
 <!-- #### Extensions:
