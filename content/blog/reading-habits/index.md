@@ -216,9 +216,9 @@ Below you can see the percentage of all books read by age group. This clearly sh
 Overall, most people, regardless of age, tended to read about 0-10 books (60.49% of the sample), but there was considerable variability and many people read as many as 20-50 books (they made up 21.26% of the sample).
 
 ### Conclusions
-- Most people read between 0-10 books a year, though some people read as many as 97 books (4.38% of the sample)!
+- Most people read between 0-10 books a year (60.49% of the sample), though some people read as many as 97 books (4.38% of the sample)!
 
-- Women reads more than men
+- Women read more than men (61.7%)
 
 - Higher educated people read more than lower educated people 
 - Those earning between $50,000 - $150,000 read more than lower earners 
