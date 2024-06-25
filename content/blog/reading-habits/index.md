@@ -211,7 +211,7 @@ Apart from the youngest age group (<20 years old), most people didn't read any b
 
 Below you can see the percentage of all books read by age group. This clearly shows that people aged 60-69 read the most (followed closely by the 50-59 age group). Those over 90 years old read the least by far at 0.15% of the books read.
 
-![screen reader text](age-group-read-perc.png "percentage of books read by age groups") 
+![screen reader text](age-group-read-perc.png "percentage of books read by age groups, sample size of 2832") 
 
 Overall, most people, regardless of age, tended to read about 0-10 books (60.49% of the sample), but there was considerable variability and many people read as many as 20-50 books (they made up 21.26% of the sample).
 
