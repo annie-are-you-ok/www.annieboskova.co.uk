@@ -34,7 +34,7 @@ I wanted to explore a dataset that would help me answer the following questions:
 I used the following dataset from kaggle.com:
 - **Reading habits**: https://www.kaggle.com/datasets/vipulgote4/reading-habit-dataset/data 
 
-This dataset looks at the reading habits and demographics of 2832 people, across 14 columns. It includes age, gender, and number of books read in a 12 moth period (the data is about 4 years old).
+This dataset looks at the reading habits and demographics of 2832 people, across 14 columns. It includes age, gender, and number of books read in a 12 month period (the data is about 4 years old).
 
 ![screen reader text](reading_habits_df_head.png "reading_habits_df.head(2)")
 ![screen reader text](reading_habits_df_shape.png "reading_habits_df.shape")
@@ -101,16 +101,19 @@ My resulting clean DataFrame looked like this:
 ### Age Distribution
 I decided to create a boxplot next to allow me to see the central tendency, dispersion, and outliers within age. This showed that the majority of the sample were aged between 30-60 years, with some outliers on both ends. 
 
-![screen reader text](boxplot-1.png "boxplot: age distribution") 
+![screen reader text](boxplot-1.png "boxplot: age distribution, sample size of 2832") 
+<!-- sample size -->
 
 By calling the **.describe()** method, I was able to see that the youngest person was 16 years old and the oldest was 93 years old, with the average age being 47.3 years old, whilst the mode age was 50 years old.  
 
 A histogram showed that a large amount of the sample were in their 20s, though the majority of people aged between 50-60 years old. And though it looks like there were many twenty-something year olds, 20-29 year olds only made up 13% of the group, whilst 50-60 year olds made up 21.6%.
 
-![screen reader text](histogram-1.png "histogram: age distribution") 
+![screen reader text](histogram-1.png "histogram: age distribution, sample size of 2832") 
+<!-- sample size -->
 
 I also used a histogram to look at the distribution of the number of books read over a 12 month period, based on ages. 
-![screen reader text](histogram-2.png "histogram: no. books read x age") 
+![screen reader text](histogram-2.png "histogram: no. books read x age, sample size of 2832") 
+<!-- sample size -->
 
 From this histogram I can see that the data is skewed to the left, i.e. most people read around 0-15 books.
 Running some descriptive statistics (by calling the **.describe()** and **.mode()** methods) showed that the average books read (i.e. the mean) were 16.7, though a large reason for this might be that the highest count seemed to be for 0-2 books (i.e. around 700 people said they read 0 to 2 books). This is also supported by the mode being 0.
@@ -131,31 +134,38 @@ high_readers
 ### 1. Do females read more than males?
 
 I then used a countplot which supported the theory that females read more than males - interestingly, it also showed that nearly twice as many males read 0-2 books in the 12 months leading up to the data collection, than females.  
-![screen reader text](countplot-1.png "countplot: books read x gender") 
+![screen reader text](countplot-1.png "countplot: books read x gender, sample size of 2832") 
+<!-- sample size -->
 
 And lastly, the pie chart below shows that, of all the books read (according to the 'How many books did you read during last 12months?' column), 61.7% of them were read by females. 
 
 ![screen reader text](piechart-1.png "piechart: books read x gender") 
 
-### 2. Do gender, age, education, income, or race influence how much a person reads?
+It is also worth noting that of the 2832 sample, 52.2% were females and 47.8% were male, therefore the genders were fairly evenly matched. 
+
+### 2. Do age, education, income, or race influence how much a person reads?
 
 Next I wanted to compare the number of books read with level of education, income, marital status, race, and age. I did this by creating several bar graphs looking at the mean books read. 
 
 The following bar plot shows that post-grade educated people read the most (around 22 books), followed by college graduates (~18 books) and people with 'some college' - it would have been interesting to see what type of books these individuals read but unfortunately, this dataset didn't specify that information. Excluding the group that refused to disclose their educational level who collectively read the least,  the rest read a similar amount (between 10-14 books). This suggests that higher educated people read slightly more but the average person isn't far off. Though there was some variability in number of books read across each category as shown by the error bars.
 
-![screen reader text](barplot-edu.png "bar graph: books read x education") 
+![screen reader text](barplot-edu.png "bar graph: books read x education, sample size of 2832") 
+<!-- sample size --> 
 
 When looking at income brackets, I found that there wasn't too much difference in number of books read. The bar graph below shows that those earning between $100,000 - $150,000 read the most (around 18 books), however, the least read books was around 12.5 (those earning the least).
 
-![screen reader text](barplot-inc.png "bar graph: books read x income") 
+![screen reader text](barplot-inc.png "bar graph: books read x income, sample size of 2832") 
+<!-- sample size -->  
 
 Interesting, the following bar graph revealed that individuals who were 'separated' read the fewest books (~10), whereas those 'living with a partner' read the most (a little under 20 books) and also showed the greatest variability in the number of books read. 
 
-![screen reader text](barplot-mar.png "bar graph: books read x marital status") 
+![screen reader text](barplot-mar.png "bar graph: books read x marital status, sample size of 2832") 
+<!-- sample size -->  
 
 When Comparing number of books read by race, I found that those identifying as 'white' read the most (~18 books), and those identifying as 'Asian or Pacific Islander' read the least(~10 books). However, those who read the most (~20 books) didn't disclose their race, and similarly some people said they "didn't know" their race or selected 'other'. Interestingly, there was also a lot of variability across each race. 
 
-![screen reader text](barplot-race.png "bar graph: books read x race") 
+![screen reader text](barplot-race.png "bar graph: books read x race, sample size of 2832") 
+<!-- sample size -->  
 
 In order to explore the correlation between age and books read, I first created a new column (*age_group*) and grouped the ages by decade to make it more manageable to handle. I did this using the following code:
 ```python 
@@ -187,27 +197,26 @@ age_df['age_group'] = pd.Categorical(age_df['age_group'], categories=ordered_age
 age_df = age_df.sort_values('age_group')
 ```
 
+![screen reader text](age-group-sample.png "sample size breakdown by age groups") 
+
+
 As a result, I was able to produce the following countplots using Seaborn's **FacetGrid** feature.
 
-![screen reader text](age_countplots.png "countplots of books read by age") 
+![screen reader text](age_countplots.png "countplots of books read by age, sample size of 2832") 
+<!-- sample size -->  
 
+This shows the distribution of the number of books read (0-97 books) in a 12 month period across different age groups. It highlights that people over 70 years old read the least, making up 12.5% of the books read during the study. Meanwhile, the most books were read by 60-69 year olds; they had the highest count for 97 books read which made up 21.34% of the books read.
 
+Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot; 390 people (13.77% of the overall sample) said they didn't read any books. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80 (meaning nearly 80 people within those age groups said they didn't read any books). 
 
+Below you can see the percentage of all books read by age group. This clearly shows that people aged 60-69 read the most (followed closely by the 50-59 age group). Those over 90 years old read the least by far at 0.15% of the books read.
 
+![screen reader text](age-group-read-perc.png "percentage of books read by age groups") 
 
-
-This shows the distribution of the number of books read (0-97 books) in a 12 month period across different age groups. It highlights that people over 70 years old read the least, whilst the most books were read by 60-69 year olds (they had the highest count for 97 books read).
-Apart from the youngest age group (<20 years old), most people didn't read any books, as shown by the lightest bar on the left of each plot. This is particularly evident among those aged 50-69 years, where the count for zero books read was around 80 (meaning nearly 80 people within those age groups said they didn't read any books). <!-- 80 by itself means nothing this should be given as a percentage of the whole set -->
-
-
-
-
-
-
-Overall, most people, regardless of age, tend to read about 0-10 books, but there is considerable variability and many people read as many as 25-50 books.
+Overall, most people, regardless of age, tended to read about 0-10 books (60.49% of the sample), but there was considerable variability and many people read as many as 20-50 books (they made up 21.26% of the sample).
 
 ### Conclusions
-- Most people read between 0-10 books a year (though some people read as many as 97 books!)
+- Most people read between 0-10 books a year, though some people read as many as 97 books (4.38% of the sample)!
 
 - Women reads more than men
 
