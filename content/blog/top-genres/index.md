@@ -193,7 +193,8 @@ plt.tight_layout()
 plt.show()
 ```
 The following bar graph indicates that the most popular genre, by far, was *Fantasy*. The least popular were *Feminism*, *Religion*, and *Politics*.
-![screen reader text](barplot-gen.png "bar graph: genre distribution") 
+
+![screen reader text](barplot-gen.png "bar graph: genre distribution, sample of 4128 books")
 
 However, I wanted to dive further and so I proceeded to separate fiction from non-fiction.
 
@@ -229,7 +230,7 @@ This allowed me to verify that they were all correctly labelled as non-fiction b
 
 I was then able to plot my bar graph, illustrating the non-fiction genres:
 
-![screen reader text](barplot-nf.png "bar graph: non-fiction genres") 
+![screen reader text](barplot-nf.png "bar graph: non-fiction genres, sample of 452 books")
 
 This indicates that the most popular non-fiction genre was **Historical**, followed by **Biography**. 
 
@@ -237,19 +238,13 @@ The top 5 non-fiction genres are:
 
 ![screen reader text](screenshot-6.png "top 5 non-fiction genres") 
 
-<!-- **How does this compare to my own taste when it comes to non-fiction?**
-
-![screen reader text](barplot-annies-nf.png "bar graph: non-fiction genres from my personal collection") 
-
-As you can see, there are far less non-fiction genres in my personal collection and my most popular genre in Poetry. -->
-
 ![screen reader text](nf-genres-wordcloud.png "") 
 
 Similarly to the non-fiction genres, I also checked some of the fiction genres (e.g. 'feminism'), but again they were correctly labelled.
 
 The following bar graph illustrates the top fiction genres:
 
-![screen reader text](barplot-fic.png "bar graph: fiction genres") 
+![screen reader text](barplot-fic.png "bar graph: fiction genres, sample of 3676 books") 
 
 As you can see, the most popular genre for fiction was **Fantasy**.  
 
@@ -258,12 +253,6 @@ The top 5 fiction genres are:
 ![screen reader text](screenshot-7.png "top 5 fiction genres") 
 
 ![screen reader text](fic-genres-wordcloud.png "") 
-
-<!-- **How does this compare to my own taste when it comes to fiction?**
-
-![screen reader text](barplot-annies-fic.png "bar graph: fiction genres from my personal collection") 
-
-In the case of fiction, my own taste and that of Goodreads start to match, at least when it come to *Fantasy*; turns out the majority of Goodreads (according to the dataset I used) and I are fans of dragons and the fantastical! :dragon: -->
 
 In both instances I can't comment on the least popular genres as the original dataset was only looking at the top 100 books every year between 1980-2023, and therefore it's possible that the least popular genres weren't included. However, of the dataset I do have, 
 I can see that *Classics* and *Picture Books* were the least popular Non-Fiction genres. Similarly, for fiction, the least popular genre was *Politics*, followed by *Feminism*, and *Religion*.
@@ -289,7 +278,7 @@ nf_ratings_msk[['title', 'authors' ,'rating_score']].head(10)
 ```
 Next, I created a horizontal bar graph showing the 10 highest rated non-fiction books.
 
-![screen reader text](top10-nf-ratings.png "bar graph: highest rated non-fiction") 
+![screen reader text](top10-nf-ratings.png "bar graph: highest rated non-fiction from a sample of 452 books") 
 
 The highest rated book in non-fiction was 'Know My Name' by Chanel Miller, with a rating of 4.71.
 
@@ -299,7 +288,7 @@ As with non-fiction, I created a mask for fiction and produced a DataFrame of fi
 
 I then plotted the 10 highest rated fiction books on a bar graph.
 
-![screen reader text](top10-fic-ratings.png "bar graph: highest rated fiction") 
+![screen reader text](top10-fic-ratings.png "bar graph: highest rated fiction from a sample of 3676 books") 
 
 The highest rated book in fiction was 'The Complete Calvin and Hobbes' by Bill Watterson, with an average rating of 4.81
 
@@ -309,12 +298,13 @@ The highest rated book in fiction was 'The Complete Calvin and Hobbes' by Bill W
 ### Me, myself, and I:
 Now the fun part, how does all this reflect my own reading habits?
 
-![screen reader text](barplot-annies-nf.png "bar graph: non-fiction genres from my personal collection") 
+![screen reader text](barplot-annies-nf.png "bar graph: non-fiction genres from my personal collection (19 books)") 
+
 As you can see, my personal collection has significantly fewer non-fiction genres, with *Poetry* being my most popular non-fiction genre.
 
 In the case of fiction, my tastes start to align with those of Goodreads, at least when it come to *Fantasy*. Turns out the majority of Goodreads (according to the dataset I used) and I are fans of dragons and the fantastical! :dragon:
 
-![screen reader text](barplot-annies-fic.png "bar graph: fiction genres from my personal collection") 
+![screen reader text](barplot-annies-fic.png "bar graph: fiction genres from my personal collection (257 books)") 
 
 
 ### Conclusions
