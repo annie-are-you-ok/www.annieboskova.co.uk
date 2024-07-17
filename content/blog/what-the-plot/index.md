@@ -57,17 +57,15 @@ The plots can be broken down into the following categories/type:
 
 
 
-### Importing Libraries
+### Importing Libraries & Data Collecting
 To begin with I imported the following libraries:
 
 ```python
 import pandas as pd
-import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 ```
-
-### Data Collecting
+ 
 I used several datasets in this project, each of which required a little data cleaning and transforming to fit my purpose.
 
 The datasets I used were:
