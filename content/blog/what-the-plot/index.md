@@ -35,25 +35,25 @@ From the most commonly use visuals, like line or bar plots (or line/bar graphs a
 
 The plots can be broken down into the following categories/type:
 
-relational plots (e.g. scatter plots) - as the name suggests, these plots show the relationship between 2 or more variables.
+- relational plots (e.g. scatter plots) - as the name suggests, these plots show the relationship between 2 or more variables.
 
-Categorical plots (e.g. boxplot) - these plots are used to show the distribution of data across different categories.
+- Categorical plots (e.g. boxplot) - these plots are used to show the distribution of data across different categories.
 
-Distribution plots (e.g. histograms and KDE plots) - these show distribution of a singular variable.
+- Distribution plots (e.g. histograms and KDE plots) - these show distribution of a singular variable.
 
-Regression plots (e.g. regplot) - these show relationships between variables using a regression model.
+- Regression plots (e.g. regplot) - these show relationships between variables using a regression model.
 
-Matrix plots (e.g. heatmaps) - these are used to visualise data in a matrix form.
+- Matrix plots (e.g. heatmaps) - these are used to visualise data in a matrix form.
 
-Multi-plot grids (e.g. pairplots and facet grids) - these are used for plotting multiple plots in a grid layout.
+- Multi-plot grids (e.g. pairplots and facet grids) - these are used for plotting multiple plots in a grid layout.
 
-Joint plots - these combine univariate and bivariate plots to show relationships between two variables.
+- Joint plots - these combine univariate and bivariate plots to show relationships between two variables.
 
-Pairwise relationships (e.g. pairplots) - relationship across a pair of plots
+- Pairwise relationships (e.g. pairplots) - relationship across a pair of plots
 
-Time Series Plots (e.g. line plot) - these are used to visualise time series data.
+- Time Series Plots (e.g. line plot) - these are used to visualise time series data.
 
-Statistical estimations (e.g. countplots) - these show statistical data estimates
+- Statistical estimations (e.g. countplots) - these show statistical data estimates
 
 
 
